@@ -15,7 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import sample.Classes.ReqsModelTab;
+import sample.ModelClasses.ReqsModelTab;
 import sample.DatabaseConnection;
 
 public class ReqsPageController {
@@ -63,7 +63,14 @@ public class ReqsPageController {
     private Label errLabel;
 
     @FXML
-    void clearFields(MouseEvent event) {
+    void clearFieldsEvent(MouseEvent event) {
+        int count = event.getClickCount();
+        if (count == 2)
+            clearFields();
+    }
+
+    private void clearFields() {
+        errLabel.setText("");
         codeReqField.clear();
         nameReqField.clear();
         addReqBtn.setDisable(false);
@@ -97,10 +104,11 @@ public class ReqsPageController {
         try {
             conn = dbConn.getDbConnection();
             ps = conn.prepareStatement(sqlInsertQuery);
-            ps.setString(1, codeReqField.getText());
-            ps.setString(2, nameReqField.getText());
+            ps.setString(1, codeReq);
+            ps.setString(2, nameReq);
             ps.executeUpdate();
         }catch (SQLException er){
+            errLabel.setText("Ошибка добавления данных");
             er.printStackTrace();
         }
         finally {
@@ -112,9 +120,7 @@ public class ReqsPageController {
                 e.printStackTrace();
             }
         }
-        errLabel.setText("");
-        codeReqField.clear();
-        nameReqField.clear();
+        clearFields();
         loadReqData();
     }
 
@@ -134,6 +140,7 @@ public class ReqsPageController {
             ps.setInt(1, rmt.getReq_ID());
             ps.executeUpdate();
         }catch (SQLException er){
+            errLabel.setText("Ошибка удаления данных");
             er.printStackTrace();
         }
         finally {
@@ -145,12 +152,7 @@ public class ReqsPageController {
                 e.printStackTrace();
             }
         }
-        errLabel.setText("");
-        codeReqField.clear();
-        nameReqField.clear();
-        addReqBtn.setDisable(false);
-        deleteReqBtn.setDisable(true);
-        updateReqBtn.setDisable(true);
+        clearFields();
         loadReqData();
     }
 
@@ -175,6 +177,7 @@ public class ReqsPageController {
             ps.setInt(3, rmt.getReq_ID());
             ps.executeUpdate();
         }catch (SQLException er){
+            errLabel.setText("Ошибка обновления данных");
             er.printStackTrace();
         }
         finally {
@@ -186,12 +189,7 @@ public class ReqsPageController {
                 e.printStackTrace();
             }
         }
-        errLabel.setText("");
-        codeReqField.clear();
-        nameReqField.clear();
-        addReqBtn.setDisable(false);
-        deleteReqBtn.setDisable(true);
-        updateReqBtn.setDisable(true);
+        clearFields();
         loadReqData();
     }
 
@@ -218,6 +216,7 @@ public class ReqsPageController {
                 reqData.add(new ReqsModelTab(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         }catch (SQLException er){
+            errLabel.setText("Ошибка загрузки данных");
             er.printStackTrace();
         }
         finally {

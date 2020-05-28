@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import sample.Classes.DevicesModelTab;
+import sample.ModelClasses.DevicesModelTab;
 import sample.DatabaseConnection;
 
 public class DevicesPageController {
@@ -61,7 +61,14 @@ public class DevicesPageController {
     private Label errLabel;
 
     @FXML
-    void clearFields(MouseEvent event) {
+    void clearFieldsEvent(MouseEvent event) {
+        int count = event.getClickCount();
+        if (count == 2)
+            clearFields();
+    }
+
+    private void clearFields() {
+        errLabel.setText("");
         codeDevField.clear();
         nameDevField.clear();
         addDevBtn.setDisable(false);
@@ -99,6 +106,7 @@ public class DevicesPageController {
             ps.setString(2, nameDev);
             ps.executeUpdate();
         }catch (SQLException er){
+            errLabel.setText("Ошибка добавления данных");
             er.printStackTrace();
         }
         finally {
@@ -110,9 +118,7 @@ public class DevicesPageController {
                 e.printStackTrace();
             }
         }
-        errLabel.setText("");
-        codeDevField.clear();
-        nameDevField.clear();
+        clearFields();
         loadDeviceData();
     }
 
@@ -132,6 +138,7 @@ public class DevicesPageController {
             ps.setInt(1, dmt.getDevice_ID());
             ps.executeUpdate();
         }catch (SQLException er){
+            errLabel.setText("Ошибка удаления данных");
             er.printStackTrace();
         }
         finally {
@@ -143,12 +150,7 @@ public class DevicesPageController {
                 e.printStackTrace();
             }
         }
-        errLabel.setText("");
-        codeDevField.clear();
-        nameDevField.clear();
-        addDevBtn.setDisable(false);
-        deleteDevBtn.setDisable(true);
-        updateDevBtn.setDisable(true);
+        clearFields();
         loadDeviceData();
     }
 
@@ -172,6 +174,7 @@ public class DevicesPageController {
             ps.setInt(3, dmt.getDevice_ID());
             ps.executeUpdate();
         }catch (SQLException er){
+            errLabel.setText("Ошибка обновления данных");
             er.printStackTrace();
         }
         finally {
@@ -183,12 +186,7 @@ public class DevicesPageController {
                 e.printStackTrace();
             }
         }
-        errLabel.setText("");
-        codeDevField.clear();
-        nameDevField.clear();
-        addDevBtn.setDisable(false);
-        deleteDevBtn.setDisable(true);
-        updateDevBtn.setDisable(true);
+        clearFields();
         loadDeviceData();
     }
 
@@ -217,6 +215,7 @@ public class DevicesPageController {
                 deviceData.add(new DevicesModelTab(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         }catch (SQLException er){
+            errLabel.setText("Ошибка загрузки данных");
             er.printStackTrace();
         }
         finally {

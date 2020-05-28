@@ -7,8 +7,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="opersAnchorPane" minHeight="600.0" minWidth="814.0" onMouseClicked="#clearFields" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.OpersPageController">
+<AnchorPane fx:id="opersAnchorPane" minHeight="600.0" minWidth="814.0" onMouseClicked="#clearFieldsEvent" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.OpersPageController">
    <children>
       <TableView fx:id="opersTab" layoutX="238.0" layoutY="345.0" onMouseClicked="#rowSelect" prefHeight="255.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="345.0">
         <columns>
@@ -33,5 +34,10 @@
       <ComboBox fx:id="reqOperList" layoutX="497.0" layoutY="50.0" prefWidth="150.0" AnchorPane.leftAnchor="497.0" />
       <Label layoutX="497.0" layoutY="25.0" text="Деталь" />
       <ComboBox fx:id="deviceOperList" layoutX="268.0" layoutY="120.0" prefWidth="150.0" AnchorPane.leftAnchor="268.0" />
+      <Label fx:id="errLabel" layoutX="45.0" layoutY="293.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="280.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

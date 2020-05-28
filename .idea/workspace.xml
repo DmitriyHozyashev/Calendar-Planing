@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Classes/DevicesModelTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Classes/OpersModelTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Classes/ReqsModelTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/DevicesPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/DevicesPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/ReqsPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/ReqsPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Classes/DevicesModelTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/DevicesModelTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Classes/OpersModelTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/OpersModelTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Classes/ReqsModelTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/ReqsModelTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/DevicesPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/DevicesPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/ReqsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/ReqsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Pages/devicesP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/devicesP.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Pages/opersP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/opersP.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Pages/reqsP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/reqsP.fxml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +85,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1bRZNLW1ib2wWwnCcXh177JisoL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -81,7 +105,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -206,26 +230,32 @@
       <workItem from="1590138052565" duration="1389000" />
       <workItem from="1590511421411" duration="22010000" />
       <workItem from="1590590637848" duration="12000" />
+      <workItem from="1590591704643" duration="8762000" />
+      <workItem from="1590680974102" duration="15428000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="((ResultSetImpl)rs).integerValueFactory" custom="com.mysql.cj.jdbc.result.ResultSetImpl" />
