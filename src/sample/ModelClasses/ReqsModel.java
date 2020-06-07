@@ -5,13 +5,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ReqsModelTab {
+public class ReqsModel {
     private final IntegerProperty req_ID;
     private final StringProperty req_Code;
     private final StringProperty req_Name;
 
-    public ReqsModelTab (int id, String code, String name)
-    {
+    public ReqsModel(int id, String code, String name) {
         this.req_ID = new SimpleIntegerProperty(id);
         this.req_Code = new SimpleStringProperty(code);
         this.req_Name = new SimpleStringProperty(name);

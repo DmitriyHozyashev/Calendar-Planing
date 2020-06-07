@@ -18,9 +18,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
-import sample.ModelClasses.DevicesModelTab;
-import sample.ModelClasses.OpersModelTab;
-import sample.ModelClasses.ReqsModelTab;
+import org.jfree.data.gantt.GanttCategoryDataset;
+import sample.ModelClasses.DevicesModel;
+import sample.ModelClasses.OpersModel;
+import sample.ModelClasses.ReqsModel;
 import sample.DatabaseConnection;
 
 public class OpersPageController {
@@ -37,25 +38,25 @@ public class OpersPageController {
     private AnchorPane opersAnchorPane;
 
     @FXML
-    private TableView<OpersModelTab> opersTab;
+    private TableView<OpersModel> opersTab;
 
     @FXML
-    private TableColumn<OpersModelTab, Integer> operIDCol;
+    private TableColumn<OpersModel, Integer> operIDCol;
 
     @FXML
-    private TableColumn<OpersModelTab, String> operNameCol;
+    private TableColumn<OpersModel, String> operNameCol;
 
     @FXML
-    private TableColumn<OpersModelTab, Double> operDurationCol;
+    private TableColumn<OpersModel, Double> operDurationCol;
 
     @FXML
-    private TableColumn<OpersModelTab, String> reqNameCol;
+    private TableColumn<OpersModel, String> reqNameCol;
 
     @FXML
-    private TableColumn<OpersModelTab, String> devNameCol;
+    private TableColumn<OpersModel, String> devNameCol;
 
     @FXML
-    private TableColumn<OpersModelTab, Integer> devOrderCol;
+    private TableColumn<OpersModel, Integer> devOrderCol;
 
     @FXML
     private Button addOperBtn;
@@ -79,10 +80,10 @@ public class OpersPageController {
     private Label errLabel;
 
     @FXML
-    private ComboBox<ReqsModelTab> reqOperList;
+    private ComboBox<ReqsModel> reqOperList;
 
     @FXML
-    private ComboBox<DevicesModelTab> deviceOperList;
+    private ComboBox<DevicesModel> deviceOperList;
 
     @FXML
     void clearFieldsEvent(MouseEvent event) {
@@ -103,15 +104,16 @@ public class OpersPageController {
         addOperBtn.setDisable(false);
         deleteOperBtn.setDisable(true);
         updateOperBtn.setDisable(true);
+
     }
     @FXML
     void rowSelect(MouseEvent event) {
         addOperBtn.setDisable(true);
-        OpersModelTab omt = opersTab.getSelectionModel().getSelectedItem();
+        OpersModel omt = opersTab.getSelectionModel().getSelectedItem();
         if (omt == null)
             return;
-        DevicesModelTab dmt = new DevicesModelTab(omt.getDevice_ID(),"",omt.getDevice_Name());
-        ReqsModelTab rmt = new ReqsModelTab(omt.getReq_ID(), "", omt.getReq_Name());
+        DevicesModel dmt = new DevicesModel(omt.getDevice_ID(),"",omt.getDevice_Name());
+        ReqsModel rmt = new ReqsModel(omt.getReq_ID(), "", omt.getReq_Name());
         deviceOperList.getSelectionModel().select(dmt);
         reqOperList.getSelectionModel().select(rmt);
         nameOperField.setText(omt.getOper_Name());
@@ -119,13 +121,14 @@ public class OpersPageController {
         deviceOrderOperFiled.setText(String.valueOf(omt.getDevice_Order()));
         updateOperBtn.setDisable(false);
         deleteOperBtn.setDisable(false);
+
     }
 
     @FXML
     void addOperation(ActionEvent event) {
         String operName = nameOperField.getText();
-        DevicesModelTab dmt = deviceOperList.getSelectionModel().getSelectedItem();
-        ReqsModelTab rmt = reqOperList.getSelectionModel().getSelectedItem();
+        DevicesModel dmt = deviceOperList.getSelectionModel().getSelectedItem();
+        ReqsModel rmt = reqOperList.getSelectionModel().getSelectedItem();
         if (operName.equals(null) || durationOperField.equals(null) || deviceOrderOperFiled.equals(null) || rmt.equals(null) || dmt.equals(null)) {
             errLabel.setText("Заполните все поля");
             return;
@@ -163,7 +166,7 @@ public class OpersPageController {
 
     @FXML
     void deleteOperation(ActionEvent event) {
-        OpersModelTab omt = opersTab.getSelectionModel().getSelectedItem();
+        OpersModel omt = opersTab.getSelectionModel().getSelectedItem();
         if(omt.equals(null)) {
             errLabel.setText("Выберите данные для удаления");
             return;
@@ -196,9 +199,9 @@ public class OpersPageController {
     @FXML
     void updateOperation(ActionEvent event) {
         String operName = nameOperField.getText();
-        OpersModelTab omt = opersTab.getSelectionModel().getSelectedItem();
-        DevicesModelTab dmt = deviceOperList.getSelectionModel().getSelectedItem();
-        ReqsModelTab rmt = reqOperList.getSelectionModel().getSelectedItem();
+        OpersModel omt = opersTab.getSelectionModel().getSelectedItem();
+        DevicesModel dmt = deviceOperList.getSelectionModel().getSelectedItem();
+        ReqsModel rmt = reqOperList.getSelectionModel().getSelectedItem();
         if (operName.equals(null) || durationOperField.equals(null) || deviceOrderOperFiled.equals(null) || rmt.equals(null) || dmt.equals(null) || omt.equals(null)) {
             errLabel.setText("Заполните все поля");
             return;
@@ -252,58 +255,58 @@ public class OpersPageController {
     }
 
     private void fillReqList(){
-        ObservableList<ReqsModelTab> reqData = null;
+        ObservableList<ReqsModel> reqData = null;
         reqData = selectData("requirments", reqData);
         reqOperList.setItems(null);
         reqOperList.setItems(reqData);
-        reqOperList.setConverter(new StringConverter<ReqsModelTab>() {
+        reqOperList.setConverter(new StringConverter<ReqsModel>() {
             @Override
-            public String toString(ReqsModelTab reqsModelTab) {
-                if (reqsModelTab == null){
+            public String toString(ReqsModel reqsModel) {
+                if (reqsModel == null){
                     return null;
                 } else {
-                    return reqsModelTab.getReq_Name();
+                    return reqsModel.getReq_Name();
                 }
             }
 
             @Override
-            public ReqsModelTab fromString(String s) {
+            public ReqsModel fromString(String s) {
                 return null;
             }
         });
     }
 
     private void fillDeviceList(){
-        ObservableList <DevicesModelTab> devData = null;
+        ObservableList <DevicesModel> devData = null;
         devData = selectData("devices", devData);
         deviceOperList.setItems(null);
         deviceOperList.setItems(devData);
-        deviceOperList.setConverter(new StringConverter<DevicesModelTab>() {
+        deviceOperList.setConverter(new StringConverter<DevicesModel>() {
             @Override
-            public String toString(DevicesModelTab devicesModelTab) {
-                if (devicesModelTab == null){
+            public String toString(DevicesModel devicesModel) {
+                if (devicesModel == null){
                     return null;
                 } else {
-                    return devicesModelTab.getDevice_Name();
+                    return devicesModel.getDevice_Name();
                 }
             }
 
             @Override
-            public DevicesModelTab fromString(String s) {
+            public DevicesModel fromString(String s) {
                 return null;
             }
         });
     }
 
     private void loadOpersData(){
-        ObservableList<OpersModelTab> opersData = null;
+        ObservableList<OpersModel> opersData = null;
         opersData = selectData("operations_view", opersData);
-        operIDCol.setCellValueFactory(new PropertyValueFactory<OpersModelTab, Integer>("oper_ID"));
-        operNameCol.setCellValueFactory(new PropertyValueFactory<OpersModelTab, String>("oper_Name"));
-        reqNameCol.setCellValueFactory(new PropertyValueFactory<OpersModelTab, String>("req_Name"));
-        operDurationCol.setCellValueFactory(new PropertyValueFactory<OpersModelTab, Double>("oper_Duration"));
-        devNameCol.setCellValueFactory(new PropertyValueFactory<OpersModelTab, String>("device_Name"));
-        devOrderCol.setCellValueFactory(new PropertyValueFactory<OpersModelTab, Integer>("device_Order"));
+        operIDCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("oper_ID"));
+        operNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("oper_Name"));
+        reqNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("req_Name"));
+        operDurationCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Double>("oper_Duration"));
+        devNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("device_Name"));
+        devOrderCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("device_Order"));
         opersTab.setItems(null);
         opersTab.setItems(opersData);
     }
@@ -324,19 +327,19 @@ public class OpersPageController {
             {
                 case "requirments": {
                     while (rs.next()) {
-                        dataList.add(new ReqsModelTab(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                        dataList.add(new ReqsModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
                     }
                     break;
                 }
                 case "devices":{
                     while (rs.next()) {
-                        dataList.add(new DevicesModelTab(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                        dataList.add(new DevicesModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
                     }
                     break;
                 }
                 case "operations_view":{
                     while (rs.next()) {
-                        dataList.add(new OpersModelTab(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8)));
+                        dataList.add(new OpersModel(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8)));
                     }
                     break;
                 }

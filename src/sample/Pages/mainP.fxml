@@ -20,7 +20,7 @@
                            <children>
                               <VBox alignment="TOP_CENTER" fillWidth="false" style="-fx-background-color: silver;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label fx:id="plansBtn" accessibleRole="BUTTON" alignment="TOP_LEFT" contentDisplay="CENTER" text="Планы" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                    <Label fx:id="plansBtn" accessibleRole="BUTTON" alignment="TOP_LEFT" contentDisplay="CENTER" onMouseClicked="#loadPlansScene" text="Планы" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                                        <font>
                                           <Font name="Calibri" size="20.0" />
                                        </font>

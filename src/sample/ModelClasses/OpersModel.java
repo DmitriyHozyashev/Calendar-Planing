@@ -2,7 +2,7 @@ package sample.ModelClasses;
 
 import javafx.beans.property.*;
 
-public class OpersModelTab {
+public class OpersModel {
     private final IntegerProperty oper_ID;
     private final StringProperty oper_Name;
     private final IntegerProperty req_ID;
@@ -12,7 +12,7 @@ public class OpersModelTab {
     private final StringProperty device_Name;
     private final IntegerProperty device_Order;
 
-    public OpersModelTab(int op_id, String op_name, int req_id, String req_name, double op_duration, int dev_id, String dev_name, int dev_order)
+    public OpersModel(int op_id, String op_name, int req_id, String req_name, double op_duration, int dev_id, String dev_name, int dev_order)
     {
         this.oper_ID = new SimpleIntegerProperty(op_id);
         this.oper_Name = new SimpleStringProperty(op_name);

@@ -5,9 +5,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class MainPageController {
 
@@ -31,6 +34,11 @@ public class MainPageController {
 
     @FXML
     private AnchorPane rightScene;
+
+    @FXML
+    void loadPlansScene(MouseEvent event) {
+        loadScene("/sample/Pages/plansP");
+    }
 
     @FXML
     void loadDevicesScene(MouseEvent event) {

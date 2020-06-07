@@ -15,13 +15,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import sample.ModelClasses.ReqsModelTab;
+import sample.ModelClasses.ReqsModel;
 import sample.DatabaseConnection;
 
 public class ReqsPageController {
 
     private DatabaseConnection dbConn;
-    //private ObservableList<ReqsModelTab> reqData;
 
     @FXML
     private ResourceBundle resources;
@@ -33,16 +32,16 @@ public class ReqsPageController {
     private AnchorPane reqAnchorPane;
 
     @FXML
-    private TableView<ReqsModelTab> reqsTab;
+    private TableView<ReqsModel> reqsTab;
 
     @FXML
-    private TableColumn<ReqsModelTab, Integer> reqIDCol;
+    private TableColumn<ReqsModel, Integer> reqIDCol;
 
     @FXML
-    private TableColumn<ReqsModelTab, String> reqCodeCol;
+    private TableColumn<ReqsModel, String> reqCodeCol;
 
     @FXML
-    private TableColumn<ReqsModelTab, String> reqNameCol;
+    private TableColumn<ReqsModel, String> reqNameCol;
 
     @FXML
     private Button addReqBtn;
@@ -81,7 +80,7 @@ public class ReqsPageController {
     @FXML
     void rowSelect(MouseEvent event) {
         addReqBtn.setDisable(true);
-        ReqsModelTab rmt = reqsTab.getSelectionModel().getSelectedItem();
+        ReqsModel rmt = reqsTab.getSelectionModel().getSelectedItem();
         if (rmt == null)
             return;
         codeReqField.setText(rmt.getReq_Code());
@@ -126,7 +125,7 @@ public class ReqsPageController {
 
     @FXML
     void deleteReq(ActionEvent event) {
-        ReqsModelTab rmt = reqsTab.getSelectionModel().getSelectedItem();
+        ReqsModel rmt = reqsTab.getSelectionModel().getSelectedItem();
         if (rmt.equals(null)){
             errLabel.setText("Выберите данные для удаления");
             return;
@@ -159,7 +158,7 @@ public class ReqsPageController {
 
     @FXML
     void updateReq(ActionEvent event) {
-        ReqsModelTab rmt = reqsTab.getSelectionModel().getSelectedItem();
+        ReqsModel rmt = reqsTab.getSelectionModel().getSelectedItem();
         String codeReq = codeReqField.getText();
         String nameReq = nameReqField.getText();
         if(codeReq.equals("") || nameReq.equals("") || rmt.equals(null)){
@@ -206,14 +205,14 @@ public class ReqsPageController {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ObservableList<ReqsModelTab> reqData = null;
+        ObservableList<ReqsModel> reqData = null;
         try {
             conn = dbConn.getDbConnection();
             reqData = FXCollections.observableArrayList();
             ps = conn.prepareStatement(sqlSelectQuery);
             rs = ps.executeQuery();
             while (rs.next()){
-                reqData.add(new ReqsModelTab(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                reqData.add(new ReqsModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         }catch (SQLException er){
             errLabel.setText("Ошибка загрузки данных");
@@ -230,9 +229,9 @@ public class ReqsPageController {
             }
         }
         errLabel.setText("");
-        reqIDCol.setCellValueFactory(new PropertyValueFactory<ReqsModelTab, Integer>("req_ID"));
-        reqCodeCol.setCellValueFactory(new PropertyValueFactory<ReqsModelTab, String>("req_Code"));
-        reqNameCol.setCellValueFactory(new PropertyValueFactory<ReqsModelTab, String>("req_Name"));
+        reqIDCol.setCellValueFactory(new PropertyValueFactory<ReqsModel, Integer>("req_ID"));
+        reqCodeCol.setCellValueFactory(new PropertyValueFactory<ReqsModel, String>("req_Code"));
+        reqNameCol.setCellValueFactory(new PropertyValueFactory<ReqsModel, String>("req_Name"));
         reqsTab.setItems(null);
         reqsTab.setItems(reqData);
     }

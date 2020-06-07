@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import sample.ModelClasses.DevicesModelTab;
+import sample.ModelClasses.DevicesModel;
 import sample.DatabaseConnection;
 
 public class DevicesPageController {
@@ -31,16 +31,16 @@ public class DevicesPageController {
     private AnchorPane deviceAnchorPane;
 
     @FXML
-    private TableView<DevicesModelTab> devicesTab;
+    private TableView<DevicesModel> devicesTab;
 
     @FXML
-    private TableColumn<DevicesModelTab, Integer> deviceIDCol;
+    private TableColumn<DevicesModel, Integer> deviceIDCol;
 
     @FXML
-    private TableColumn<DevicesModelTab, String> deviceCodeCol;
+    private TableColumn<DevicesModel, String> deviceCodeCol;
 
     @FXML
-    private TableColumn<DevicesModelTab, String> deviceNameCol;
+    private TableColumn<DevicesModel, String> deviceNameCol;
 
     @FXML
     private Button addDevBtn;
@@ -79,7 +79,7 @@ public class DevicesPageController {
     @FXML
     void rowSelect(MouseEvent event) {
         addDevBtn.setDisable(true);
-        DevicesModelTab dmt = devicesTab.getSelectionModel().getSelectedItem();
+        DevicesModel dmt = devicesTab.getSelectionModel().getSelectedItem();
         if (dmt == null)
             return;
         codeDevField.setText(dmt.getDevice_Code());
@@ -124,7 +124,7 @@ public class DevicesPageController {
 
     @FXML
     void deleteDevice(ActionEvent event) {
-        DevicesModelTab dmt = devicesTab.getSelectionModel().getSelectedItem();
+        DevicesModel dmt = devicesTab.getSelectionModel().getSelectedItem();
         if (dmt.equals(null)) {
             errLabel.setText("Выберите данные для удаления");
             return;
@@ -156,7 +156,7 @@ public class DevicesPageController {
 
     @FXML
     void updateDevice(ActionEvent event) {
-        DevicesModelTab dmt = devicesTab.getSelectionModel().getSelectedItem();
+        DevicesModel dmt = devicesTab.getSelectionModel().getSelectedItem();
         String codeDev = codeDevField.getText();
         String nameDev = nameDevField.getText();
         if(codeDev.equals("") || nameDev.equals("") || dmt.equals(null)) {
@@ -205,14 +205,14 @@ public class DevicesPageController {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ObservableList<DevicesModelTab> deviceData = null;
+        ObservableList<DevicesModel> deviceData = null;
         try {
             conn = dbConn.getDbConnection();
             deviceData = FXCollections.observableArrayList();
             ps = conn.prepareStatement(sqlSelectQuery);
             rs = ps.executeQuery();
             while (rs.next()){
-                deviceData.add(new DevicesModelTab(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                deviceData.add(new DevicesModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         }catch (SQLException er){
             errLabel.setText("Ошибка загрузки данных");
@@ -229,9 +229,9 @@ public class DevicesPageController {
             }
         }
         errLabel.setText("");
-        deviceIDCol.setCellValueFactory(new PropertyValueFactory<DevicesModelTab, Integer>("device_ID"));
-        deviceCodeCol.setCellValueFactory(new PropertyValueFactory<DevicesModelTab, String>("device_Code"));
-        deviceNameCol.setCellValueFactory(new PropertyValueFactory<DevicesModelTab, String>("device_Name"));
+        deviceIDCol.setCellValueFactory(new PropertyValueFactory<DevicesModel, Integer>("device_ID"));
+        deviceCodeCol.setCellValueFactory(new PropertyValueFactory<DevicesModel, String>("device_Code"));
+        deviceNameCol.setCellValueFactory(new PropertyValueFactory<DevicesModel, String>("device_Name"));
         devicesTab.setItems(null);
         devicesTab.setItems(deviceData);
     }

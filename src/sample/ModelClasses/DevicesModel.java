@@ -5,12 +5,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class DevicesModelTab {
+public class DevicesModel {
     private final IntegerProperty device_ID;
     private final StringProperty device_Code;
     private final StringProperty device_Name;
 
-    public DevicesModelTab(int id, String code, String name) {
+    public DevicesModel(int id, String code, String name) {
         this.device_ID = new SimpleIntegerProperty(id);
         this.device_Code = new  SimpleStringProperty(code);
         this.device_Name = new SimpleStringProperty(name);
