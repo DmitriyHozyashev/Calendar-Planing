@@ -17,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sample.ModelClasses.ReqsModel;
 import sample.DatabaseConnection;
+import sample.ModelClasses.UserDataTransfer;
+import sample.ModelClasses.UserModel;
 
 public class ReqsPageController {
 

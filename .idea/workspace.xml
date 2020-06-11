@@ -2,29 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_fx_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_jfree_fxgraphics2d_2_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalendarPlanning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CalendarPlanning.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/DevicesPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/DevicesPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/AuthPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/AuthPageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/MainPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/MainPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/ReqsPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/ReqsPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/ModelClasses/DevicesModelTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/ModelClasses/OpersModelTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/ModelClasses/ReqsModelTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/ModelClasses/UserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/ModelClasses/UserModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/authP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/authP.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/mainP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/mainP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/DevicesPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/DevicesPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/plansP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/plansP.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/AuthPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/AuthPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controllers/MainPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/MainPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/PlansPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/PlansPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controllers/ReqsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/ReqsPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ModelClasses/DevicesModelTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/DevicesModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ModelClasses/OpersModelTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/OpersModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ModelClasses/ReqsModelTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/ReqsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ModelClasses/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ModelClasses/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Pages/authP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/authP.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Pages/mainP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/mainP.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Pages/plansP.fxml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,8 +73,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -118,11 +112,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Calendar-Planing\src\sample\Pages" />
+      <recent name="C:\Users\Delivus\IdeaProjects\CalendarPlanning\src\sample\Pages" />
       <recent name="C:\Users\Delivus\IdeaProjects\CalendarPlanning\src\sample" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Delivus\IdeaProjects\CalendarPlanning\src\sample\Pages" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Delivus\IdeaProjects\CalendarPlanning\src\sample" />
     </key>
   </component>
@@ -242,6 +237,12 @@
       <workItem from="1590927967613" duration="5447000" />
       <workItem from="1591270446803" duration="5104000" />
       <workItem from="1591455592804" duration="5118000" />
+      <workItem from="1591546896139" duration="6077000" />
+      <workItem from="1591623263267" duration="19448000" />
+      <workItem from="1591710109635" duration="27000" />
+      <workItem from="1591716107473" duration="45000" />
+      <workItem from="1591716724429" duration="23000" />
+      <workItem from="1591894098432" duration="9163000" />
     </task>
     <servers />
   </component>
@@ -264,12 +265,5 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="((ResultSetImpl)rs).integerValueFactory" custom="com.mysql.cj.jdbc.result.ResultSetImpl" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

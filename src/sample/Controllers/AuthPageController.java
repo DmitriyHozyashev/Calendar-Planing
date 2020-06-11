@@ -18,6 +18,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DatabaseConnection;
+import sample.ModelClasses.UserDataTransfer;
+import sample.ModelClasses.UserModel;
 
 public class AuthPageController {
     private DatabaseConnection dbConn;
@@ -75,8 +77,10 @@ public class AuthPageController {
             ps.setString(1, userLogin);
             ps.setString(2, userPsswd);
             rs = ps.executeQuery();
-            if(rs.next())
+            if(rs.next()) {
+                UserDataTransfer.getInstance().setUserModel(new UserModel(rs.getInt(1), rs.getString(2)));
                 return true;
+            }
             return false;
         } catch (SQLException e) {
             e.printStackTrace();

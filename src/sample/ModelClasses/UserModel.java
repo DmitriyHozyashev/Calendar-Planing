@@ -8,12 +8,10 @@ import javafx.beans.property.StringProperty;
 public class UserModel {
     private final IntegerProperty user_ID;
     private final StringProperty user_Login;
-    private final StringProperty user_Password;
 
-    public UserModel(int user_ID, String user_Login, String user_Password) {
+    public UserModel(int user_ID, String user_Login) {
         this.user_ID = new SimpleIntegerProperty(user_ID);
         this.user_Login = new SimpleStringProperty(user_Login);
-        this.user_Password = new SimpleStringProperty(user_Password);
     }
 
     public int getUser_ID() {
@@ -38,17 +36,5 @@ public class UserModel {
 
     public void setUser_Login(String user_Login) {
         this.user_Login.set(user_Login);
-    }
-
-    public String getUser_Password() {
-        return user_Password.get();
-    }
-
-    public StringProperty user_PasswordProperty() {
-        return user_Password;
-    }
-
-    public void setUser_Password(String user_Password) {
-        this.user_Password.set(user_Password);
     }
 }
