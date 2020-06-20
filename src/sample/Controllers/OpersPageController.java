@@ -18,7 +18,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
-import org.jfree.data.gantt.GanttCategoryDataset;
 import sample.ModelClasses.DevicesModel;
 import sample.ModelClasses.OpersModel;
 import sample.ModelClasses.ReqsModel;
@@ -135,6 +134,13 @@ public class OpersPageController {
         }
         Double operDuration = Double.parseDouble(durationOperField.getText());
         Integer deviceOrder = Integer.parseInt(deviceOrderOperFiled.getText());
+        ObservableList<OpersModel> opersObs = null;
+        String sqlSelectQuery = "SELECT * FROM operations_view WHERE Req_ID = " + rmt.getReq_ID() + " && Device_ID = " + dmt.getDevice_ID() + " && Device_Order = " + deviceOrder;
+        opersObs = selectData("operations_view", opersObs, sqlSelectQuery);
+        if (opersObs.size() != 0){
+            errLabel.setText("На эту позицию уже назначена операция");
+            return;
+        }
         String sqlInsertQuery = "INSERT INTO operations (Op_Name, Req_ID, Op_Duration, Device_ID, Device_Order) VALUES (?, ?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -256,7 +262,8 @@ public class OpersPageController {
 
     private void fillReqList(){
         ObservableList<ReqsModel> reqData = null;
-        reqData = selectData("requirments", reqData);
+        String sqlSelectQuery = "SELECT * FROM requirments";
+        reqData = selectData("requirments", reqData, sqlSelectQuery);
         reqOperList.setItems(null);
         reqOperList.setItems(reqData);
         reqOperList.setConverter(new StringConverter<ReqsModel>() {
@@ -265,7 +272,7 @@ public class OpersPageController {
                 if (reqsModel == null){
                     return null;
                 } else {
-                    return reqsModel.getReq_Name();
+                    return reqsModel.getReq_Code() + " " + reqsModel.getReq_Name();
                 }
             }
 
@@ -278,7 +285,8 @@ public class OpersPageController {
 
     private void fillDeviceList(){
         ObservableList <DevicesModel> devData = null;
-        devData = selectData("devices", devData);
+        String sqlSelectQuery = "SELECT * FROM devices";
+        devData = selectData("devices", devData, sqlSelectQuery);
         deviceOperList.setItems(null);
         deviceOperList.setItems(devData);
         deviceOperList.setConverter(new StringConverter<DevicesModel>() {
@@ -287,7 +295,7 @@ public class OpersPageController {
                 if (devicesModel == null){
                     return null;
                 } else {
-                    return devicesModel.getDevice_Name();
+                    return devicesModel.getDevice_Code() + " " + devicesModel.getDevice_Name();
                 }
             }
 
@@ -300,7 +308,8 @@ public class OpersPageController {
 
     private void loadOpersData(){
         ObservableList<OpersModel> opersData = null;
-        opersData = selectData("operations_view", opersData);
+        String sqlSelectQuery = "SELECT * FROM operations_view";
+        opersData = selectData("operations_view", opersData, sqlSelectQuery);
         operIDCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("oper_ID"));
         operNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("oper_Name"));
         reqNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("req_Name"));
@@ -311,9 +320,9 @@ public class OpersPageController {
         opersTab.setItems(opersData);
     }
 
-    private ObservableList selectData(String tableName, ObservableList dataList)
+    private ObservableList selectData(String tableName, ObservableList dataList, String sqlSelectQuery)
     {
-        String sqlSelectQuery = "SELECT * FROM "+tableName;
+        //String sqlSelectQuery = "SELECT * FROM "+tableName;
         dataList = null;
         Connection conn = null;
         PreparedStatement ps = null;

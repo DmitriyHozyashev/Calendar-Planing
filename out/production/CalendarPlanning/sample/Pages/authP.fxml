@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="700.0" prefHeight="400.0" prefWidth="700.0" style="-fx-border-color: silver;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.AuthPageController">
    <children>
-      <Button fx:id="loginSignInBtn" layoutX="307.0" layoutY="302.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="43.0" prefWidth="89.0" text="Вход">
+      <Button fx:id="loginSignInBtn" layoutX="202.0" layoutY="303.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="45.0" prefWidth="125.0" text="Вход">
          <font>
             <Font name="Calibri" size="18.0" />
          </font>
@@ -30,5 +30,10 @@
          </font>
       </PasswordField>
       <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="336.0" layoutY="272.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" />
+      <Button fx:id="registrBtn" layoutX="375.0" layoutY="303.0" mnemonicParsing="false" onAction="#registrUser" prefHeight="45.0" prefWidth="125.0" text="Регистрация">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

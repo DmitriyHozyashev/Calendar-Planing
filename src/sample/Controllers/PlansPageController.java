@@ -7,9 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -21,10 +19,12 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import sample.DatabaseConnection;
+import sample.Methods;
 import sample.ModelClasses.*;
 
 public class PlansPageController {
@@ -41,25 +41,16 @@ public class PlansPageController {
     private AnchorPane plansAnchorPane;
 
     @FXML
-    private TableView<?> opersTab;
+    private TableView<OpersModel> opersTab;
 
     @FXML
-    private TableColumn<?, ?> operIDCol;
+    private TableColumn<OpersModel, Integer> operIDCol;
 
     @FXML
-    private TableColumn<?, ?> operNameCol;
+    private TableColumn<OpersModel, String> operNameCol;
 
     @FXML
-    private TableColumn<?, ?> operDurationCol;
-
-    @FXML
-    private TableColumn<?, ?> reqNameCol;
-
-    @FXML
-    private TableColumn<?, ?> devNameCol;
-
-    @FXML
-    private TableColumn<?, ?> devOrderCol;
+    private TableColumn<OpersModel, String> reqNameCol;
 
     @FXML
     private Button loadPlanBtn;
@@ -77,7 +68,7 @@ public class PlansPageController {
     private TextField planNameField;
 
     @FXML
-    private TextField planTimeStartField;
+    private DatePicker planTimeStartField;
 
     @FXML
     private ComboBox<String> algorithmsList;
@@ -95,7 +86,28 @@ public class PlansPageController {
     private Button updateReqBtn;
 
     @FXML
+    private Button calculateBtn;
+
+    @FXML
     private ComboBox<ReqsModel> reqList;
+
+    @FXML
+    private TableView<String> comparisonTab;
+
+    @FXML
+    private TableColumn<String, String> algNameCol;
+
+    @FXML
+    private TableColumn<String, String> executionTimeCol;
+
+    @FXML
+    private TableColumn<String, String> planTimeCol;
+
+    @FXML
+    private TableColumn<String, String> deviceNumbCol;
+
+    @FXML
+    private TableColumn<String, String> reqNumberCol;
 
     @FXML
     private StackedBarChart<Number, String> stackedBarChart;
@@ -109,16 +121,66 @@ public class PlansPageController {
     @FXML
     private Label errLabel;
 
-
+    private TreeMap<String,TreeMap<String, OpersModel>> operationsCategory;
+    private ArrayList<ArrayList<OpersModel>> mapList;
+    private Set<String> deviceSet;
+    private Set<String> reqSet;
 
     @FXML
-    void addReqInPlan(ActionEvent event) {
+    void addOperInPlan(ActionEvent event) {
+        ReqsModel rqm = reqList.getSelectionModel().getSelectedItem();
+        if (rqm == null){
+            errLabel.setText("Вывберите деталь для добавления");
+            return;
+        }
+        String sqlSelectQuery = "SELECT * FROM operations_view WHERE Req_ID = " + rqm.getReq_ID() + " ORDER BY 8";
+        ObservableList<OpersModel> opersObs = null;
+        opersObs = selectData(opersObs, sqlSelectQuery, "2");
+        for (OpersModel opm : opersObs){
+            deviceSet.add(opm.getDevice_Name());
+            reqSet.add(opm.getReq_Name());
+            operationsCategory.putIfAbsent(opm.getDevice_Name(), new TreeMap<>());
+            operationsCategory.get(opm.getDevice_Name()).putIfAbsent(opm.getReq_Name(), opm);
+        }
+    }
 
+    private void fillAndTransformMap (){
+        TreeMap<String, TreeMap<String, OpersModel>> mapCopy = new TreeMap<>(operationsCategory);
+        for (String device : deviceSet) {
+            mapCopy.putIfAbsent(device, new TreeMap<>());
+            for (String req : reqSet)
+                mapCopy.get(device).putIfAbsent(req, null);
+        }
+        mapList = new ArrayList<>();
+        for (String key : mapCopy.keySet())
+            mapList.add(new ArrayList<>(mapCopy.get(key).values()));
+    }
+
+    @FXML
+    void calculateBtn(ActionEvent event) {
+        fillAndTransformMap();
+        Methods mt = new Methods();
+        mt.minMaxLabor(mapList, 1);
+    }
+
+    @FXML
+    void deleteReqInPlan(ActionEvent event) {
+    }
+
+    @FXML
+    void updateReqInPlan(ActionEvent event) {
     }
 
     @FXML
     void clearFieldsEvent(MouseEvent event) {
+        clearFields();
+    }
 
+    private void clearFields(){
+        errLabel.setText("");
+        deleteReqBtn.setDisable(true);
+        updateReqBtn.setDisable(true);
+        reqList.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -127,7 +189,7 @@ public class PlansPageController {
     }
 
     @FXML
-    void deleteReqInPlan(ActionEvent event) {
+    void savePlan(ActionEvent event) {
 
     }
 
@@ -138,25 +200,55 @@ public class PlansPageController {
 
     @FXML
     void rowSelect(MouseEvent event) {
-
-    }
-
-    @FXML
-    void savePlan(ActionEvent event) {
-
-    }
-
-    @FXML
-    void updateReqInPlan(ActionEvent event) {
-
+        OpersModel opm = opersTab.getSelectionModel().getSelectedItem();
+        String sqlSelectQuery = "SELCT * FROM requirments WHERE Req_ID = " + opm.getReq_ID();
+        ObservableList<ReqsModel> reqsList = null;
+        reqsList = selectData(reqsList, sqlSelectQuery, "3");
+        reqList.getSelectionModel().select(reqsList.get(0));
+        addReqBtn.setDisable(true);
+        updateReqBtn.setDisable(false);
+        deleteReqBtn.setDisable(false);
     }
 
     @FXML
     void initialize() {
+        operIDCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("oper_ID"));
+        operNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("oper_Name"));
+        reqNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("req_Name"));
+        /*operDurationCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Double>("oper_Duration"));
+        devNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("device_Name"));
+        devOrderCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("device_Order"));*/
         dbConn = new DatabaseConnection();
-        ObservableList<String> algsList = FXCollections.observableArrayList();
-        algsList.addAll("Джонсон", "Генетический", "Метод");
-        algorithmsList.setItems(algsList);
+        operationsCategory = new TreeMap<>();
+        deviceSet = new HashSet<>();
+        reqSet = new HashSet<>();
+        updateReqBtn.setDisable(true);
+        deleteReqBtn.setDisable(true);
+        fillReqList();
+        fillPlansList();
+    }
+
+    private void fillReqList(){
+        String sqlSelectQuery = "SELECT * FROM requirments WHERE requirments.Req_ID IN (SELECT operations_view.Req_ID FROM operations_view)";
+        ObservableList<ReqsModel> reqsObsList = null;
+        reqsObsList = selectData(reqsObsList, sqlSelectQuery, "3");
+        reqList.setItems(null);
+        reqList.setItems(reqsObsList);
+        reqList.setConverter(new StringConverter<ReqsModel>() {
+            @Override
+            public String toString(ReqsModel reqsModel) {
+                if(reqsModel == null)
+                    return null;
+                else
+                    return reqsModel.getReq_Name();
+            }
+
+            @Override
+            public ReqsModel fromString(String s) {
+                return null;
+            }
+        });
+        reqList.setDisable(false);
     }
 
     private void fillPlansList(){
@@ -182,28 +274,6 @@ public class PlansPageController {
         });
     }
 
-    private void fillDetailsList(){
-        String sqlSelectQuery = "SELECT * FROM requirments WHERE requirments.Req_ID IN (SELECT operations_view.Req_ID FROM operations_view)";
-        ObservableList<DevicesModel> reqsObsList = null;
-        reqsObsList = selectData(reqsObsList, sqlSelectQuery, "2");
-        reqList.setItems(null);
-        reqList.setConverter(new StringConverter<ReqsModel>() {
-            @Override
-            public String toString(ReqsModel reqsModel) {
-                if(reqsModel == null)
-                    return null;
-                else
-                    return reqsModel.getReq_Name();
-            }
-
-            @Override
-            public ReqsModel fromString(String s) {
-                return null;
-            }
-        });
-
-    }
-
     private ObservableList selectData(ObservableList dataList, String sqlSelectQuery, String code)
     {
         dataList = null;
@@ -225,13 +295,13 @@ public class PlansPageController {
                 }
                 case "2":{
                     while (rs.next()) {
-                        dataList.add(new ReqsModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                        dataList.add(new OpersModel(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8)));
                     }
                     break;
                 }
                 case "3":{
                     while (rs.next()) {
-                        dataList.add(new OpersModel(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8)));
+                        dataList.add(new ReqsModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
                     }
                     break;
                 }

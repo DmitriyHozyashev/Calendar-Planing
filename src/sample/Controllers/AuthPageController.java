@@ -37,6 +37,9 @@ public class AuthPageController {
     private Button loginSignInBtn;
 
     @FXML
+    private Button registrBtn;
+
+    @FXML
     private TextField loginField;
 
     @FXML
@@ -63,6 +66,22 @@ public class AuthPageController {
         else {
             errLabel.setText("Такого пользователя нет");
             errLabel.setVisible(true);
+        }
+    }
+
+    @FXML
+    void registrUser(ActionEvent event) {
+        try {
+            registrBtn.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(getClass().getResource("/sample/Pages/registrationP.fxml"));
+            Stage registerStage = new Stage();
+            registerStage.setTitle("Регистрация");
+            registerStage.setScene(new Scene(root, 700, 400));
+            registerStage.resizableProperty().setValue(false);
+            registerStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

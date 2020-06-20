@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
@@ -14,13 +16,13 @@
          <content>
             <AnchorPane minHeight="600.0" minWidth="1024.0">
                <children>
-                  <SplitPane dividerPositions="0.0" minHeight="600.0" minWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.0" layoutY="24.0" minHeight="578.0" minWidth="1024.0" prefHeight="578.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                     <items>
-                      <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="210.0">
+                      <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="210.0">
                            <children>
-                              <VBox alignment="TOP_CENTER" fillWidth="false" style="-fx-background-color: silver;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox alignment="TOP_CENTER" fillWidth="false" prefWidth="210.0" style="-fx-background-color: #6495ED;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label fx:id="plansBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadPlansScene" prefHeight="43.0" prefWidth="258.0" text="Планы" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                    <Label fx:id="plansBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadPlansScene" prefHeight="43.0" prefWidth="258.0" text="Планы" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                                        <font>
                                           <Font name="Calibri" size="20.0" />
                                        </font>
@@ -31,7 +33,7 @@
                                           <Insets bottom="10.0" top="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="operBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadOpersScene" prefHeight="43.0" prefWidth="302.0" text="Операции" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                    <Label fx:id="operBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadOpersScene" prefHeight="43.0" prefWidth="302.0" text="Операции" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                                        <font>
                                           <Font name="Calibri" size="20.0" />
                                        </font>
@@ -39,7 +41,7 @@
                                           <Insets bottom="10.0" top="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="devicesBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadDevicesScene" prefHeight="43.0" prefWidth="389.0" text="Станки" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                    <Label fx:id="devicesBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadDevicesScene" prefHeight="43.0" prefWidth="389.0" text="Станки" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                                        <font>
                                           <Font name="Calibri" size="20.0" />
                                        </font>
@@ -47,7 +49,7 @@
                                           <Insets bottom="10.0" top="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="detailsBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadReqsScene" prefHeight="43.0" prefWidth="392.0" text="Детали" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                    <Label fx:id="detailsBtn" accessibleRole="BUTTON" alignment="TOP_CENTER" contentDisplay="CENTER" onMouseClicked="#loadReqsScene" prefHeight="43.0" prefWidth="392.0" text="Детали" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                                        <font>
                                           <Font name="Calibri" size="20.0" />
                                        </font>
@@ -62,9 +64,14 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                      <AnchorPane fx:id="rightScene" />
+                      <AnchorPane fx:id="rightScene" prefHeight="556.0" prefWidth="806.0" />
                     </items>
                   </SplitPane>
+                  <ButtonBar buttonOrder="" layoutX="196.0" layoutY="-6.0" prefHeight="18.0" prefWidth="1024.0" style="-fx-background-color: #6495ED;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <buttons>
+                      <Button fx:id="exitBtn" mnemonicParsing="false" text="Выход" />
+                    </buttons>
+                  </ButtonBar>
                </children>
             </AnchorPane>
          </content>
