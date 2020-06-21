@@ -2,34 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/fxgraphics2d.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_fx_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfreechart_fx_1_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_jfree_fxgraphics2d_2_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalendarPlanning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CalendarPlanning.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/OpersPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/MainPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/MainPageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/PlansPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/devicesP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/devicesP.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/RegistrPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Controllers/RegistrPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Methods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Methods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/mainP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/mainP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/opersP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/opersP.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/plansP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/plansP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/reqsP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarPlanning/sample/Pages/reqsP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/AuthPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/AuthPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/OpersPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/MainPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/MainPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controllers/PlansPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/PlansPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Pages/authP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/authP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Pages/devicesP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/devicesP.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/RegistrPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/RegistrPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Methods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Methods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Pages/mainP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/mainP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Pages/opersP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/opersP.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Pages/plansP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/plansP.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Pages/reqsP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pages/reqsP.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,6 +76,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -122,13 +110,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Java/fxgraphics2d" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Учеба/Лабы по ВЭС/Lab 2" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -274,7 +262,8 @@
       <workItem from="1592500538710" duration="4552000" />
       <workItem from="1592558641739" duration="24061000" />
       <workItem from="1592603877844" duration="4008000" />
-      <workItem from="1592613166250" duration="477000" />
+      <workItem from="1592613166250" duration="22604000" />
+      <workItem from="1592686899760" duration="53337000" />
     </task>
     <servers />
   </component>
@@ -303,12 +292,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Methods.java</url>
-          <line>37</line>
+          <line>34</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Methods.java</url>
-          <line>26</line>
+          <line>23</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

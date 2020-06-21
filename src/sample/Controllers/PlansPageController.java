@@ -1,5 +1,6 @@
 package sample.Controllers;
 
+import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,9 +69,6 @@ public class PlansPageController {
     private TextField planNameField;
 
     @FXML
-    private DatePicker planTimeStartField;
-
-    @FXML
     private ComboBox<String> algorithmsList;
 
     @FXML
@@ -87,6 +85,9 @@ public class PlansPageController {
 
     @FXML
     private Button calculateBtn;
+
+    @FXML
+    private Button raportBtn;
 
     @FXML
     private ComboBox<ReqsModel> reqList;
@@ -110,6 +111,9 @@ public class PlansPageController {
     private TableColumn<String, String> reqNumberCol;
 
     @FXML
+    private TableColumn<?, ?> idleTime;
+
+    @FXML
     private StackedBarChart<Number, String> stackedBarChart;
 
     @FXML
@@ -125,6 +129,12 @@ public class PlansPageController {
     private ArrayList<ArrayList<OpersModel>> mapList;
     private Set<String> deviceSet;
     private Set<String> reqSet;
+
+
+    @FXML
+    void makeRaport(ActionEvent event) {
+
+    }
 
     @FXML
     void addOperInPlan(ActionEvent event) {
@@ -142,6 +152,7 @@ public class PlansPageController {
             operationsCategory.putIfAbsent(opm.getDevice_Name(), new TreeMap<>());
             operationsCategory.get(opm.getDevice_Name()).putIfAbsent(opm.getReq_Name(), opm);
         }
+        opersTab.getItems().addAll(opersObs);
     }
 
     private void fillAndTransformMap (){
@@ -160,11 +171,80 @@ public class PlansPageController {
     void calculateBtn(ActionEvent event) {
         fillAndTransformMap();
         Methods mt = new Methods();
-        mt.minMaxLabor(mapList, 1);
+        ArrayList<ArrayList<OpersModel>> oar = new ArrayList<>();
+
+            String ind = algorithmsList.getSelectionModel().getSelectedItem();
+            switch (ind)
+            {
+                case "Метод Джонсона": {
+                    long startTime = System.currentTimeMillis();
+                    mt.johnsonAlgorithm(mapList, mapList.size());
+                    long stopTime = System.currentTimeMillis();
+                    System.out.println(stopTime - startTime);
+                    break;
+                }
+                case "Генетический алгоритм":{
+                    long startTime = System.currentTimeMillis();
+                    mt.geneticAlgorithm(mapList);
+                    long stopTime = System.currentTimeMillis();
+                    System.out.println(stopTime - startTime);
+                    break;
+                }
+                case "Детали с меньшей трудоемкостью запускаются в обработку первыми":{
+                    long startTime = System.currentTimeMillis();
+                    mt.minMaxLabor(mapList, 1);
+                    long stopTime = System.currentTimeMillis();
+                    System.out.println(stopTime - startTime);
+                    break;
+                }
+                case "Детали с большей трудоемкостью запускаются в обработку первыми":{
+                    long startTime = System.currentTimeMillis();
+                    mt.minMaxLabor(mapList, 0);
+                    long stopTime = System.currentTimeMillis();
+                    System.out.println(stopTime - startTime);
+                    break;
+                }
+                case "Детали с большим кол-ов невыполненных операций запускаются в обработку первыми":{
+                    long startTime = System.currentTimeMillis();
+                    oar = mt.operationsNumber(mapList);
+                    long stopTime = System.currentTimeMillis();
+                    System.out.println(stopTime - startTime);
+                    break;
+                }
+                case "Деталь выбирается случайно":{
+                    long startTime = System.currentTimeMillis();
+
+                    for (int i =0; i < 5; i++) {
+                        oar = mt.randomDetail(mapList);
+                        ArrayList<ArrayList<OpersModel>> oa = new ArrayList<>();
+                        for (int j = 0; j < oar.size(); j++) {
+                            oa.add(new ArrayList<>());
+                            for (OpersModel op : oar.get(j))
+                                oa.get(j).add(op);
+                        }
+                        for (int j = 0; j < oa.size(); j++)
+                        {
+                            for (OpersModel op : oa.get(j))
+                            {
+                                if (op == null)
+                                    System.out.printf("%-25s", "null");
+                                else
+                                    System.out.printf("%-25s", op.getDevice_Name() + "/" + op.getReq_Name() + "/" + op.getOper_Duration());
+                            }
+                            System.out.println();
+                        }
+                        System.out.println("\n\n");
+                    }
+                    long stopTime = System.currentTimeMillis();
+                    //System.out.println(stopTime - startTime);
+                    break;
+                }
+            }
     }
 
     @FXML
     void deleteReqInPlan(ActionEvent event) {
+
     }
 
     @FXML
@@ -185,7 +265,38 @@ public class PlansPageController {
 
     @FXML
     void deletePlan(ActionEvent event) {
-
+        PlansModel pm = plansList.getSelectionModel().getSelectedItem();
+        if (pm == null) {
+            errLabel.setText("Выберите данные для удаления");
+            return;
+        }
+        String sqlDeletePlanQuery = "DELETE  FROM plans WHERE Plan_ID = ?";
+        String sqlDeleteOpersPlanQuery = "DELETE  FROM operations_view WHERE Plan_ID = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = dbConn.getDbConnection();
+            ps = conn.prepareStatement(sqlDeletePlanQuery);
+            ps.setInt(1, pm.getPlan_ID());
+            ps.executeUpdate();
+            ps = conn.prepareStatement(sqlDeleteOpersPlanQuery);
+            ps.setInt(1, pm.getPlan_ID());
+            ps.executeUpdate();
+        }catch (SQLException er){
+            errLabel.setText("Ошибка удаления данных");
+            er.printStackTrace();
+        }
+        finally {
+            try {
+                ps.close();
+                conn.close();
+            } catch (SQLException e) {
+                errLabel.setText("Ошибка удаления данных");
+                e.printStackTrace();
+            }
+        }
+        clearFields();
+        loadPlan();
     }
 
     @FXML
@@ -195,6 +306,10 @@ public class PlansPageController {
 
     @FXML
     void loadPlan(ActionEvent event) {
+
+    }
+
+    private void loadPlan(){
 
     }
 
@@ -215,15 +330,14 @@ public class PlansPageController {
         operIDCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("oper_ID"));
         operNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("oper_Name"));
         reqNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("req_Name"));
-        /*operDurationCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Double>("oper_Duration"));
-        devNameCol.setCellValueFactory(new PropertyValueFactory<OpersModel, String>("device_Name"));
-        devOrderCol.setCellValueFactory(new PropertyValueFactory<OpersModel, Integer>("device_Order"));*/
         dbConn = new DatabaseConnection();
         operationsCategory = new TreeMap<>();
         deviceSet = new HashSet<>();
         reqSet = new HashSet<>();
         updateReqBtn.setDisable(true);
         deleteReqBtn.setDisable(true);
+        ObservableList<String> options = FXCollections.observableArrayList("Метод Джонсона", "Генетический алгоритм", "Детали с меньшей трудоемкостью запускаются в обработку первыми", "Детали с большей трудоемкостью запускаются в обработку первыми", "Детали с большим кол-ов невыполненных операций запускаются в обработку первыми", "Деталь выбирается случайно");
+        algorithmsList.setItems(options);
         fillReqList();
         fillPlansList();
     }
@@ -257,6 +371,8 @@ public class PlansPageController {
         ObservableList<PlansModel> plansObsList = null;
         plansObsList = selectData(plansObsList, sqlSelectQuery, "1");
         plansList.setItems(null);
+        plansList.setItems(plansObsList);
+        plansObsList.add(new PlansModel(0, "Тест план", "2020.06.18", userModel.getUser_ID(), userModel.getUser_Login()));
         plansList.setItems(plansObsList);
         plansList.setConverter(new StringConverter<PlansModel>() {
             @Override

@@ -2,13 +2,10 @@ package sample;
 
 import sample.ModelClasses.OpersModel;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Random;
+import java.util.*;
 
 public class Methods {
-
+    //Алгоритм Джонсона
     public ArrayList johnsonAlgorithm(ArrayList<ArrayList<OpersModel>> mapList, int deviceNumber){
         ArrayList<Integer> arrTop = new ArrayList<>();
         ArrayList<Integer> arrBottom = new ArrayList<>();
@@ -135,5 +132,124 @@ public class Methods {
         if (n)
             sortMapByPath(mapList, false);
         return mapList;
+    }
+
+    public ArrayList geneticAlgorithm(ArrayList<ArrayList<OpersModel>> mapList){
+        for (int i = 0; i<mapList.size(); i++) {
+            for (int j = 0; j < mapList.get(i).size(); j++)
+                if (mapList.get(i).get(j) == null)
+                    mapList.get(i).remove(j);
+        }
+        ArrayList<OpersModel> mParent = new ArrayList<>();
+        for (int i =0; i < mapList.size(); i++) {
+            for (OpersModel op : mapList.get(i))
+                mParent.add(op);
+        }
+        ArrayList <ArrayList<OpersModel>> parentPop = new ArrayList<>();
+
+        for (int i = 0; i <50; i++){
+            parentPop.add(new ArrayList<>());
+            for (OpersModel op : mParent)
+                parentPop.get(i).add(op);
+            Collections.shuffle(parentPop, new Random(50));
+        }
+        parentPop = sortGenetic(parentPop);
+        while (parentPop.size() != 1)
+            parentPop = selectionF(parentPop);
+        return parentPop;
+    }
+
+    public ArrayList selectionF(ArrayList<ArrayList<OpersModel>> parentPop){
+        ArrayList<ArrayList<OpersModel>> selectedPop = new ArrayList<>();
+        Random rnd = new Random();
+        double fitValue = fitnessF(parentPop.get(rnd.nextInt(parentPop.size())));
+        for (int i =0; i<parentPop.size(); i++){
+            selectedPop.add(new ArrayList<>());
+            double sumDuration = 0;
+            for (OpersModel op : parentPop.get(i))
+                sumDuration += op.getOper_Duration();
+            if (sumDuration <= fitValue)
+                selectedPop.add(parentPop.get(i));
+        }
+        return crossF(selectedPop);
+    }
+
+    public ArrayList crossF(ArrayList<ArrayList<OpersModel>> selectedPop){
+        ArrayList<ArrayList<OpersModel>> offspringPop = new ArrayList<>();
+        for (int i =0;  i < selectedPop.size(); i++)
+            Collections.shuffle(selectedPop, new Random(5));
+        Random rnd = new Random();
+        int rndind =0;
+        for (int i=0; i< selectedPop.size(); i++) {
+            rndind = rnd.nextInt(selectedPop.size());
+            ArrayList<OpersModel> subList = (ArrayList<OpersModel>) selectedPop.get(rndind).subList(rnd.nextInt(selectedPop.get(rndind).size()), rnd.nextInt(selectedPop.get(rndind).size()));
+            OpersModel op = subList.get(0);
+            rndind = rnd.nextInt(selectedPop.size());
+            ArrayList<OpersModel> list = selectedPop.get(rndind);
+            for (int j = 0; j<subList.size();j++)
+                Collections.replaceAll(list, subList.get(j), null);
+            int index = list.indexOf(op);
+            list.addAll(index, subList);
+            list.remove(null);
+            offspringPop.add(list);
+        }
+        return mutationF(offspringPop);
+    }
+
+    public ArrayList mutationF(ArrayList<ArrayList<OpersModel>> offspringPop){
+        Random rnd = new Random();
+        int rndind = 0;
+        for (int i = 0; i<offspringPop.size();i++){
+            ArrayList<OpersModel> list = offspringPop.get(i);
+            rndind = rnd.nextInt(list.size());
+            OpersModel op = list.get(rndind);
+            OpersModel op1;
+            if (op.getDevice_Order() == 1)
+                op1 = new OpersModel(op.getOper_ID(), op.getOper_Name(),op.getReq_ID(),op.getReq_Name(),op.getOper_Duration(),op.getDevice_ID(), op.getDevice_Name(), (op.getDevice_Order()+1));
+            else
+                op1 = new OpersModel(op.getOper_ID(), op.getOper_Name(),op.getReq_ID(),op.getReq_Name(),op.getOper_Duration(),op.getDevice_ID(), op.getDevice_Name(), (op.getDevice_Order()-1));
+            int index = list.indexOf(op1);
+            if (index < rndind)
+                index = rnd.nextInt((rndind-1 - index+1) +1)+index+1;
+            else
+                index = rnd.nextInt((index-1 - rndind+1) +1)+rndind+1;
+            list.remove(op);
+            list.add(index, op);
+            for (OpersModel opm : list)
+                if (op.getReq_ID() == opm.getReq_ID() && op.getDevice_Order() < opm.getDevice_Order()){
+                    int ind = list.lastIndexOf(opm);
+                    list.remove(opm);
+                    list.add((ind+1), opm);
+                }
+        }
+        return offspringPop;
+    }
+
+    public double fitnessF(ArrayList<OpersModel> genomeListOfspring){
+        double fitValue = 0;
+        for (OpersModel op : genomeListOfspring)
+            fitValue += op.getOper_Duration();
+        return fitValue;
+    }
+
+    public ArrayList sortGenetic(ArrayList<ArrayList<OpersModel>> parentPop){
+        boolean sort = true;
+        while (!sort)
+            for (int i =0; i<parentPop.size(); i++){
+                for (int j = 0; j < parentPop.get(i).size(); j++) {
+                    for (int k = 0; k < parentPop.get(i). size(); k++)
+                        if (parentPop.get(i).get(j).getReq_ID() == parentPop.get(i).get(k).getReq_ID() && parentPop.get(i).get(j).getDevice_Order() < parentPop.get(i).get(k).getDevice_Order() && j<k)
+                        {
+                            OpersModel op = parentPop.get(i).get(j);
+                            if (k+1 > parentPop.get(i).size())
+                                parentPop.get(i).add(op);
+                            else
+                                parentPop.get(i).set(k+1, op);
+                            parentPop.get(i).remove(j);
+                            sort = false;
+                        }
+                }
+            }
+        return parentPop;
     }
 }
