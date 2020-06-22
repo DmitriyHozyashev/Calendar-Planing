@@ -76,11 +76,11 @@ public class RegistrPageController {
         try {
             registrBtn.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            Parent root = loader.load(getClass().getResource("/sample/Pages/auth.fxml"));
+            Parent root = loader.load(getClass().getResource("/sample/Pages/authP.fxml"));
             Stage mainPage = new Stage();
             mainPage.setTitle("Авторизация");
-            mainPage.setScene(new Scene(root));
-            mainPage.setMaximized(true);
+            mainPage.setScene(new Scene(root, 700, 400));
+            mainPage.resizableProperty().setValue(false);
             mainPage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();

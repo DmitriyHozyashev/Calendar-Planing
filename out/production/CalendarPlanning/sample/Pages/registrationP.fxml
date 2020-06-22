@@ -24,7 +24,7 @@
             <Font name="Calibri" size="18.0" />
          </font>
       </PasswordField>
-      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="336.0" layoutY="272.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" />
+      <Label fx:id="errLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="271.0" prefHeight="17.0" prefWidth="228.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="236.0" />
       <Button fx:id="backBtn" layoutX="371.0" layoutY="302.0" mnemonicParsing="false" onAction="#backToAuth" prefHeight="45.0" prefWidth="125.0" text="Назад">
          <font>
             <Font name="Calibri" size="18.0" />

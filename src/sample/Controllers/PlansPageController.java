@@ -111,7 +111,7 @@ public class PlansPageController {
     private TableColumn<String, String> reqNumberCol;
 
     @FXML
-    private TableColumn<?, ?> idleTime;
+    private TableColumn<String, String> idleTime;
 
     @FXML
     private StackedBarChart<Number, String> stackedBarChart;
@@ -206,37 +206,16 @@ public class PlansPageController {
                 }
                 case "Детали с большим кол-ов невыполненных операций запускаются в обработку первыми":{
                     long startTime = System.currentTimeMillis();
-                    oar = mt.operationsNumber(mapList);
+                    mt.operationsNumber(mapList);
                     long stopTime = System.currentTimeMillis();
                     System.out.println(stopTime - startTime);
                     break;
                 }
                 case "Деталь выбирается случайно":{
                     long startTime = System.currentTimeMillis();
-
-                    for (int i =0; i < 5; i++) {
-                        oar = mt.randomDetail(mapList);
-                        ArrayList<ArrayList<OpersModel>> oa = new ArrayList<>();
-                        for (int j = 0; j < oar.size(); j++) {
-                            oa.add(new ArrayList<>());
-                            for (OpersModel op : oar.get(j))
-                                oa.get(j).add(op);
-                        }
-                        for (int j = 0; j < oa.size(); j++)
-                        {
-                            for (OpersModel op : oa.get(j))
-                            {
-                                if (op == null)
-                                    System.out.printf("%-25s", "null");
-                                else
-                                    System.out.printf("%-25s", op.getDevice_Name() + "/" + op.getReq_Name() + "/" + op.getOper_Duration());
-                            }
-                            System.out.println();
-                        }
-                        System.out.println("\n\n");
-                    }
+                    mt.randomDetail(mapList);
                     long stopTime = System.currentTimeMillis();
-                    //System.out.println(stopTime - startTime);
+                    System.out.println(stopTime - startTime);
                     break;
                 }
             }
@@ -263,6 +242,10 @@ public class PlansPageController {
         reqList.getSelectionModel().clearSelection();
     }
 
+    private void fillCompTab(){
+
+    }
+
     @FXML
     void deletePlan(ActionEvent event) {
         PlansModel pm = plansList.getSelectionModel().getSelectedItem();
@@ -271,7 +254,7 @@ public class PlansPageController {
             return;
         }
         String sqlDeletePlanQuery = "DELETE  FROM plans WHERE Plan_ID = ?";
-        String sqlDeleteOpersPlanQuery = "DELETE  FROM operations_view WHERE Plan_ID = ?";
+        String sqlDeleteOpersPlanQuery = "DELETE  FROM operationsplan WHERE Plan_ID = ?";
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -301,15 +284,27 @@ public class PlansPageController {
 
     @FXML
     void savePlan(ActionEvent event) {
-
+        UserModel userModel = UserDataTransfer.getInstance().getUserModel();
+        String sqlInsertPlanQuery = "INSERT INTO plans (Plan_Name, Plan_Creation_Date, Used_Algorithms, Plan_Duration) " + userModel.getUser_ID();
     }
 
     @FXML
     void loadPlan(ActionEvent event) {
-
+        UserModel userModel = UserDataTransfer.getInstance().getUserModel();
+        String sqlSelectQuery = "SELECT * FROM plans_view WHERE User_ID = " + userModel.getUser_ID();
+        ObservableList<PlansModel> plansObsList = null;
+        plansObsList = selectData(plansObsList, sqlSelectQuery, "1");
     }
 
     private void loadPlan(){
+        PlansModel pm = plansList.getSelectionModel().getSelectedItem();
+        if (pm == null){
+            errLabel.setText("Выберите план для загрузки");
+            return;
+        }
+    }
+
+    private void drawDiagramm(){
 
     }
 

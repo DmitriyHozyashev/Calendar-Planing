@@ -322,7 +322,6 @@ public class OpersPageController {
 
     private ObservableList selectData(String tableName, ObservableList dataList, String sqlSelectQuery)
     {
-        //String sqlSelectQuery = "SELECT * FROM "+tableName;
         dataList = null;
         Connection conn = null;
         PreparedStatement ps = null;
