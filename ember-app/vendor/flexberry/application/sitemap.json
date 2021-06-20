@@ -1,0 +1,86 @@
+﻿{
+  "applicationCaption": "Планирование",
+  "applicationTitle": "cpmc",
+  "items": [
+    {
+      "link": null,
+      "menuName": "планирование",
+      "caption": "Планирование",
+      "title": "Планирование",
+      "children": [
+        {
+          "link": "cpmc-plan-l",
+          "menuName": null,
+          "caption": "Планы",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-d-s-e-l",
+          "menuName": null,
+          "caption": "Детали",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-process-order-l",
+          "menuName": null,
+          "caption": "Порядок обарудования",
+          "title": "",
+          "children": null
+        }
+      ]
+    },
+    {
+      "link": null,
+      "menuName": "справочники",
+      "caption": "Справочники",
+      "title": "Справочники",
+      "children": [
+        {
+          "link": "cpmc-unit-metr-l",
+          "menuName": null,
+          "caption": "Единицы измерения",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-work-type-l",
+          "menuName": null,
+          "caption": "Типы ДСЕ",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-machine-l",
+          "menuName": null,
+          "caption": "Оборудование",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-tool-l",
+          "menuName": null,
+          "caption": "Инструменты",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-material-l",
+          "menuName": null,
+          "caption": "Материалы",
+          "title": "",
+          "children": null
+        },
+        {
+          "link": "cpmc-operation-l",
+          "menuName": null,
+          "caption": "Операции",
+          "title": "",
+          "children": null
+        }
+      ]
+    }
+  ],
+  "mobile": true
+}

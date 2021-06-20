@@ -1,0 +1,13 @@
+﻿{
+  "propertyLookup": [],
+  "caption": "Операция",
+  "name": "cpmcOperationE",
+  "className": "OperationE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-operation",
+      "modelProjection": "OperationE"
+    }
+  ]
+}

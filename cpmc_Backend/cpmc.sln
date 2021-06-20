@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cpmc.Objects", "Objects\cpmc.Objects.csproj", "{9906CA58-6399-4988-ADAA-8369FCEBAB91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cpmc.ODataBackend", "ODataBackend\cpmc.ODataBackend.csproj", "{D4B91381-B621-48FC-9ADF-4DF69D44B092}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9906CA58-6399-4988-ADAA-8369FCEBAB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9906CA58-6399-4988-ADAA-8369FCEBAB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9906CA58-6399-4988-ADAA-8369FCEBAB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9906CA58-6399-4988-ADAA-8369FCEBAB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B91381-B621-48FC-9ADF-4DF69D44B092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B91381-B621-48FC-9ADF-4DF69D44B092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B91381-B621-48FC-9ADF-4DF69D44B092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B91381-B621-48FC-9ADF-4DF69D44B092}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

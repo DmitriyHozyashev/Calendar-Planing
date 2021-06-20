@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-material-e",
+  "editForm": "cpmc-material-e",
+  "caption": "Материалы",
+  "name": "cpmcMaterialL",
+  "className": "MaterialL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-material",
+      "modelProjection": "MaterialL"
+    }
+  ]
+}

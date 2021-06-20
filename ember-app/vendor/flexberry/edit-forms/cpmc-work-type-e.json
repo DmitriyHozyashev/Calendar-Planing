@@ -1,0 +1,13 @@
+﻿{
+  "propertyLookup": [],
+  "caption": "Тип деталей",
+  "name": "cpmcWorkTypeE",
+  "className": "WorkTypeE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-work-type",
+      "modelProjection": "WorkTypeE"
+    }
+  ]
+}

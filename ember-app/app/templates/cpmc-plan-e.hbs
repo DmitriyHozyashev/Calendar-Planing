@@ -1,0 +1,101 @@
+<h3 class="ui header">{{t 'forms.cpmc-plan-e.caption'}}</h3>
+
+<form class="ui form flexberry-vertical-form" role="form">
+  {{flexberry-error error=error}}
+  <div class="field">
+    <div class="sixteen wide">
+      {{flexberry-validationsummary errors=model.errors}}
+    </div>
+  </div>
+  <div class="field">
+    <div class="flexberry-edit-panel">
+      {{#unless readonly}}
+        <button type="submit" class="ui button save-button" {{action 'save'}}>
+          {{t "forms.edit-form.save-button-text"}}
+        </button>
+        {{#unless model.isNew}}
+          <button type="submit" class="ui button save-del-button" {{action 'delete'}}>
+            {{t "forms.edit-form.delete-button-text"}}
+          </button>
+        {{/unless}}
+      {{/unless}}
+      <button type="submit" class="ui button close-button" {{action 'close'}}>
+        {{t "forms.edit-form.close-button-text"}}
+      </button>
+      {{cpmc-print-plan planData=model}}
+    </div>
+  </div>
+  <div class="three fields">
+    <div class="field">
+    {{
+      flexberry-field
+      placeholder=(t 'components.flexberry-field.placeholder')
+      readonly=readonly
+      required=true
+      value=model.name
+      class=(if model.errors.name 'error' '')
+      label=(t 'forms.cpmc-plan-e.name-caption')
+    }}
+    {{flexberry-validationmessage error=model.errors.name pointing="pointing"}}
+  </div>
+
+  <div class="field">
+    <label>{{t 'forms.cpmc-plan-e.state-caption'}}</label>
+    {{
+      flexberry-dropdown
+      items=(flexberry-enum 'cpmc-t-plan-state')
+      value=model.state
+      readonly=readonly
+    }}
+    {{flexberry-validationmessage error=model.errors.state pointing="pointing"}}
+  </div>
+  <div class="field">
+    <label>{{t 'forms.cpmc-plan-e.algorithm-caption'}}</label>
+    {{
+      flexberry-dropdown
+      items=(flexberry-enum 'cpmc-t-plan-algorithm')
+      value=model.algorithm
+      readonly=readonly
+    }}
+    {{flexberry-validationmessage error=model.errors.algorithm pointing="pointing"}}
+  </div>
+</div>
+
+{{#unless model.isNew}}
+<div class="field">
+  <button class="ui button flexberry-buttin" {{action 'getPlan'}}>Обновить план</button>
+</div>
+
+<div class="field">
+  <label>График</label>
+  {{#if visibleChart}}
+    {{
+      cpmc-gantt-chart
+      planItems=model.planItem
+      planRoute=routeArray
+      planProcessOrder=processOrderItemsArray
+      dseOrder=dseOrder
+      algorithm=model.algorithm
+      sumTime=model.totalTime
+      planJSON=model.planJSON
+    }}
+  {{/if}}
+</div>
+{{/unless}}
+
+<div class="field">
+  <label>{{t 'forms.cpmc-plan-e.planItem-caption'}}</label>
+  {{
+    flexberry-groupedit
+    componentName="planItemGroupEdit"
+    mainModelProjection=modelProjection
+    modelProjection=modelProjection.attributes.planItem
+    content=model.planItem
+    readonly=readonly
+    orderable=false
+    class=(if model.errors.planItem 'error' '')
+  }}
+  {{flexberry-validationmessage error=model.errors.planItem pointing="pointing"}}
+</div>
+<a class="hidden download-anchor"></a>
+</form>

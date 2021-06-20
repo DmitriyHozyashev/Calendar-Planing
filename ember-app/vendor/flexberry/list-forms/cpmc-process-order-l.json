@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-process-order-e",
+  "editForm": "cpmc-process-order-e",
+  "caption": null,
+  "name": "cpmcProcessOrderL",
+  "className": "ProcessOrderL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-process-order",
+      "modelProjection": "ProcessOrderL"
+    }
+  ]
+}

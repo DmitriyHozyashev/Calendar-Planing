@@ -1,0 +1,22 @@
+﻿{
+  "propertyLookup": [
+    {
+      "master": null,
+      "displayAttributeName": null,
+      "required": false,
+      "relationName": "BaseUnit",
+      "projection": "UnitMetrL",
+      "detailModelName": null
+    }
+  ],
+  "caption": "Единица измерения",
+  "name": "cpmcUnitMetrE",
+  "className": "UnitMetrE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-unit-metr",
+      "modelProjection": "UnitMetrE"
+    }
+  ]
+}

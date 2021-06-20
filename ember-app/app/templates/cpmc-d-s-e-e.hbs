@@ -1,0 +1,166 @@
+<h3 class="ui header">{{t 'forms.cpmc-d-s-e-e.caption'}}</h3>
+
+<form class="ui form flexberry-vertical-form" role="form">
+  {{flexberry-error error=error}}
+  <div class="field">
+    <div class="sixteen wide">
+      {{flexberry-validationsummary errors=model.errors}}
+    </div>
+  </div>
+  <div class="field">
+    <div class="flexberry-edit-panel">
+      {{#unless readonly}}
+        <button type="submit" class="ui button save-button" {{action 'save'}}>
+          {{t "forms.edit-form.save-button-text"}}
+        </button>
+        {{#unless model.isNew}}
+          <button type="submit" class="ui button save-del-button" {{action 'delete'}}>
+            {{t "forms.edit-form.delete-button-text"}}
+          </button>
+        {{/unless}}
+      {{/unless}}
+      <button type="submit" class="ui button close-button" {{action 'close'}}>
+        {{t "forms.edit-form.close-button-text"}}
+      </button>
+    </div>
+  </div>
+  <div class="field">
+  {{
+    flexberry-field
+    placeholder=(t 'components.flexberry-field.placeholder')
+    readonly=readonly
+    required=true
+    value=model.code
+    class=(if model.errors.code 'error' '')
+    label=(t 'forms.cpmc-d-s-e-e.code-caption')
+  }}
+  {{flexberry-validationmessage error=model.errors.code pointing="pointing"}}
+</div>
+
+<div class="field">
+  {{
+    flexberry-field
+    placeholder=(t 'components.flexberry-field.placeholder')
+    readonly=readonly
+    required=true
+    value=model.name
+    class=(if model.errors.name 'error' '')
+    label=(t 'forms.cpmc-d-s-e-e.name-caption')
+  }}
+  {{flexberry-validationmessage error=model.errors.name pointing="pointing"}}
+</div>
+
+<div class="field">
+  <label>{{t 'forms.cpmc-d-s-e-e.workType-caption'}}</label>
+  {{
+    flexberry-lookup
+    choose='showLookupDialog'
+    remove='removeLookupValue'
+    value=model.workType
+    displayAttributeName='name'
+    autocomplete=true
+    relationName='workType'
+    projection='WorkTypeL'
+    title=(t 'forms.cpmc-d-s-e-e.workType-caption')
+    readonly=readonly
+  }}
+  {{flexberry-validationmessage error=model.errors.workType pointing="pointing"}}
+</div>
+
+<div class="field">
+  <label>{{t 'forms.cpmc-d-s-e-e.unitMetr-caption'}}</label>
+  {{
+    flexberry-lookup
+    choose='showLookupDialog'
+    remove='removeLookupValue'
+    value=model.unitMetr
+    displayAttributeName='shortName'
+    autocomplete=true
+    relationName='unitMetr'
+    projection='UnitMetrL'
+    title=(t 'forms.cpmc-d-s-e-e.unitMetr-caption')
+    readonly=readonly
+  }}
+  {{flexberry-validationmessage error=model.errors.unitMetr pointing="pointing"}}
+</div>
+
+<div class="field">
+  {{
+    flexberry-field
+    placeholder=(t 'components.flexberry-field.placeholder')
+    readonly=true
+    required=true
+    value=model.unitMetr.shortName
+    class=(if model.errors.unitMetr.shortName 'error' '')
+    label=(t 'forms.cpmc-d-s-e-e.unitMetr.shortName-caption')
+  }}
+  {{flexberry-validationmessage error=model.errors.unitMetr.shortName pointing="pointing"}}
+</div>
+
+<div class="field">
+  {{
+    flexberry-field
+    placeholder=(t 'components.flexberry-field.placeholder')
+    readonly=readonly
+    required=true
+    value=model.laborIntensity
+    class=(if model.errors.laborIntensity 'error' '')
+    label=(t 'forms.cpmc-d-s-e-e.laborIntensity-caption')
+  }}
+  {{flexberry-validationmessage error=model.errors.laborIntensity pointing="pointing"}}
+</div>
+
+<div class="field">
+  <label>{{t 'forms.cpmc-d-s-e-e.laborIntensityUnit-caption'}}</label>
+  {{
+    flexberry-lookup
+    choose='showLookupDialog'
+    remove='removeLookupValue'
+    value=model.laborIntensityUnit
+    displayAttributeName='shortName'
+    autocomplete=true
+    relationName='laborIntensityUnit'
+    projection='UnitMetrL'
+    title=(t 'forms.cpmc-d-s-e-e.laborIntensityUnit-caption')
+    readonly=readonly
+  }}
+  {{flexberry-validationmessage error=model.errors.laborIntensityUnit pointing="pointing"}}
+</div>
+
+<div class="field">
+  <label>{{t 'forms.cpmc-d-s-e-e.processOrder-caption'}}</label>
+  {{
+    flexberry-lookup
+    choose='showLookupDialog'
+    remove='removeLookupValue'
+    value=model.processOrder
+    displayAttributeName='name'
+    autocomplete=true
+    relationName='processOrder'
+    projection='ProcessOrderL'
+    title=(t 'forms.cpmc-d-s-e-e.processOrder-caption')
+    readonly=readonly
+  }}
+  {{flexberry-validationmessage error=model.errors.processOrder pointing="pointing"}}
+</div>
+<div class="field">
+  <button class="ui button flexberry-buttin" {{action 'createRoute'}}>Заполнить маршрут</button>
+</div>
+<div class="field">
+  <label>{{t 'forms.cpmc-d-s-e-e.dSERout-caption'}}</label>
+  {{
+    flexberry-groupedit
+    createNewButton=false
+    deleteButton=false
+    componentName="dSERoutGroupEdit"
+    mainModelProjection=modelProjection
+    modelProjection=modelProjection.attributes.dSERout
+    content=model.dSERout
+    readonly=readonly
+    orderable=false
+    class=(if model.errors.dSERout 'error' '')
+  }}
+  {{flexberry-validationmessage error=model.errors.dSERout pointing="pointing"}}
+</div>
+
+</form>

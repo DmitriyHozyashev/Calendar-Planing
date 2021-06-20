@@ -1,0 +1,146 @@
+﻿{
+  "name": "cpmcProcessOrderItem",
+  "modelName": "cpmc-process-order-item",
+  "className": "ProcessOrderItem",
+  "parentModelName": null,
+  "parentClassName": null,
+  "attrs": [
+    {
+      "name": "orderMachine",
+      "type": "number",
+      "flexberryType": "int",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "createTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "creator",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editor",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    }
+  ],
+  "belongsTo": [
+    {
+      "polymorphic": false,
+      "presence": true,
+      "name": "machine",
+      "relatedTo": "cpmc-machine",
+      "inverse": null
+    },
+    {
+      "polymorphic": false,
+      "presence": true,
+      "name": "processOrder",
+      "relatedTo": "cpmc-process-order",
+      "inverse": "processOrderItem"
+    }
+  ],
+  "hasMany": [],
+  "projections": [
+    {
+      "name": "AuditView",
+      "modelName": "cpmc-process-order-item",
+      "attrs": [
+        {
+          "name": "orderMachine",
+          "caption": "Order machine",
+          "hidden": false,
+          "index": 0
+        }
+      ],
+      "belongsTo": [
+        {
+          "lookupValue": "Name",
+          "lookupValueField": "name",
+          "relationName": "Machine",
+          "belongsTo": [],
+          "hidden": false,
+          "attrs": [
+            {
+              "name": "name",
+              "caption": "Name",
+              "hidden": true,
+              "index": 2
+            }
+          ],
+          "index": 1,
+          "caption": "Machine",
+          "name": "machine",
+          "relatedTo": "cpmc-machine",
+          "inverse": null
+        }
+      ],
+      "hasMany": []
+    },
+    {
+      "name": "ProcessOrderItemE",
+      "modelName": "cpmc-process-order-item",
+      "attrs": [
+        {
+          "name": "orderMachine",
+          "caption": "Порядок",
+          "hidden": false,
+          "index": 0
+        }
+      ],
+      "belongsTo": [
+        {
+          "lookupValue": "Code",
+          "lookupValueField": "code",
+          "relationName": "Machine",
+          "belongsTo": [],
+          "hidden": false,
+          "attrs": [
+            {
+              "name": "code",
+              "caption": "",
+              "hidden": true,
+              "index": 2
+            },
+            {
+              "name": "name",
+              "caption": "Наименование оборудования",
+              "hidden": false,
+              "index": 3
+            }
+          ],
+          "index": 1,
+          "caption": "Оборудование",
+          "name": "machine",
+          "relatedTo": "cpmc-machine",
+          "inverse": null
+        }
+      ],
+      "hasMany": []
+    }
+  ],
+  "stored": true,
+  "offline": true
+}

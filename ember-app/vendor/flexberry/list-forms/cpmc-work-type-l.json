@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-work-type-e",
+  "editForm": "cpmc-work-type-e",
+  "caption": "Типы деталей",
+  "name": "cpmcWorkTypeL",
+  "className": "WorkTypeL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-work-type",
+      "modelProjection": "WorkTypeL"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-machine-e",
+  "editForm": "cpmc-machine-e",
+  "caption": "Станки",
+  "name": "cpmcMachineL",
+  "className": "MachineL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-machine",
+      "modelProjection": "MachineL"
+    }
+  ]
+}

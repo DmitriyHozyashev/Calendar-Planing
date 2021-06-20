@@ -1,0 +1,22 @@
+﻿{
+  "propertyLookup": [
+    {
+      "master": "machine",
+      "displayAttributeName": "code",
+      "required": true,
+      "relationName": "ProcessOrderItem.Machine",
+      "projection": "MachineL",
+      "detailModelName": "cpmc-process-order-item"
+    }
+  ],
+  "caption": "Порядок обработки",
+  "name": "cpmcProcessOrderE",
+  "className": "ProcessOrderE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-process-order",
+      "modelProjection": "ProcessOrderE"
+    }
+  ]
+}

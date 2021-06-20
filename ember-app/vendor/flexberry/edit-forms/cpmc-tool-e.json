@@ -1,0 +1,13 @@
+﻿{
+  "propertyLookup": [],
+  "caption": "Инструмент",
+  "name": "cpmcToolE",
+  "className": "ToolE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-tool",
+      "modelProjection": "ToolE"
+    }
+  ]
+}

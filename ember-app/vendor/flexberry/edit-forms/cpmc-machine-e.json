@@ -1,0 +1,13 @@
+﻿{
+  "propertyLookup": [],
+  "caption": "Станок",
+  "name": "cpmcMachineE",
+  "className": "MachineE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-machine",
+      "modelProjection": "MachineE"
+    }
+  ]
+}

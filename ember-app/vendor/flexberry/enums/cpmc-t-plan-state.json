@@ -1,0 +1,12 @@
+﻿{
+  "nameSpace": "cpmc",
+  "className": "tPlanState",
+  "enumObjects": {
+    "New": null,
+    "Suspended": null,
+    "Approved": null,
+    "NotApproved": null,
+    "Archive": null,
+    "Done": null
+  }
+}

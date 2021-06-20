@@ -1,0 +1,119 @@
+﻿{
+  "name": "cpmcProcessOrder",
+  "modelName": "cpmc-process-order",
+  "className": "ProcessOrder",
+  "parentModelName": null,
+  "parentClassName": null,
+  "attrs": [
+    {
+      "name": "name",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "createTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "creator",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editor",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    }
+  ],
+  "belongsTo": [],
+  "hasMany": [
+    {
+      "name": "processOrderItem",
+      "relatedTo": "cpmc-process-order-item",
+      "inverse": "processOrder"
+    }
+  ],
+  "projections": [
+    {
+      "name": "AuditView",
+      "modelName": "cpmc-process-order",
+      "attrs": [
+        {
+          "name": "name",
+          "caption": "",
+          "hidden": false,
+          "index": 0
+        }
+      ],
+      "belongsTo": [],
+      "hasMany": [
+        {
+          "projectionName": "AuditView",
+          "caption": "Process order item",
+          "name": "processOrderItem",
+          "relatedTo": "cpmc-process-order-item",
+          "inverse": null
+        }
+      ]
+    },
+    {
+      "name": "ProcessOrderE",
+      "modelName": "cpmc-process-order",
+      "attrs": [
+        {
+          "name": "name",
+          "caption": "Наименование",
+          "hidden": false,
+          "index": 0
+        }
+      ],
+      "belongsTo": [],
+      "hasMany": [
+        {
+          "projectionName": "ProcessOrderItemE",
+          "caption": "Оборудование",
+          "name": "processOrderItem",
+          "relatedTo": "cpmc-process-order-item",
+          "inverse": null
+        }
+      ]
+    },
+    {
+      "name": "ProcessOrderL",
+      "modelName": "cpmc-process-order",
+      "attrs": [
+        {
+          "name": "name",
+          "caption": "Наименование",
+          "hidden": false,
+          "index": 0
+        }
+      ],
+      "belongsTo": [],
+      "hasMany": []
+    }
+  ],
+  "stored": true,
+  "offline": true
+}

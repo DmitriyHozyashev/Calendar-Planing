@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-unit-metr-e",
+  "editForm": "cpmc-unit-metr-e",
+  "caption": "Единицы измерения",
+  "name": "cpmcUnitMetrL",
+  "className": "UnitMetrL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-unit-metr",
+      "modelProjection": "UnitMetrL"
+    }
+  ]
+}

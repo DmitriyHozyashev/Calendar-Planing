@@ -1,0 +1,72 @@
+<form id="form1" {{action "onLoginFormSubmit" on="submit"}}>
+	<div class="container">
+		<div class="login-form-header">
+			<div>
+        {{t "application-name"}}
+      </div>
+		</div>
+		<div class="login-form-inner">
+      <div class="ui {{if loginIsInProcess "active"}} inverted dimmer">
+        <div class="ui loader"></div>
+      </div>
+			<h2>
+        Вход в систему
+      </h2>
+      {{#if loginFailed}}
+        <span id="LoginUser_FailureText" class="login-from-failure-text">
+          {{#if loginErrorMessage}}
+            {{loginErrorMessage}}<br />
+          {{/if}}
+          Неудачная попытка входа.<br/>
+          Повторите попытку.
+        </span>
+      {{/if}}
+			<label for="LoginUser_UserName" id="LoginUser_UserNameLabel" class="login-form-label">
+        Логин:
+      </label>
+      {{#if loginIsInvalid}}
+        <span
+          id="LoginUser_UserNameRequired"
+          title="Обязательно для заполнения"
+          class="validator validator-field-required">
+          Обязательно для заполнения
+        </span>
+      {{/if}}
+			{{input
+        id="LoginUser_UserName"
+        name="LoginUser$UserName"
+        type="text"
+        class="login-form-input input-block-level"
+        placeholder="Логин"
+        value=login
+        change=(action "onLoginChange")
+      }}
+			<label for="LoginUser_Password" id="LoginUser_PasswordLabel" class="login-form-label">
+        Пароль:
+      </label>
+      {{#if passwordIsInvalid}}
+        <span
+          id="LoginUser_PasswordRequired"
+          title="Обязательно для заполнения"
+          class="validator validator-field-required">
+          Обязательно для заполнения
+        </span>
+      {{/if}}
+			{{input
+        id="LoginUser_Password"
+        name="LoginUser$Password"
+        type="password"
+        class="login-form-input input-block-level"
+        placeholder="Пароль"
+        value=password
+        change=(action "onPasswordChange")
+      }}
+			<input
+        id="LoginUser_LoginButton"
+        type="submit"
+        name="LoginUser$LoginButton"
+        value="Войти"
+        class="ics-btn login-form-btn">
+    </div>
+	</div>
+</form>

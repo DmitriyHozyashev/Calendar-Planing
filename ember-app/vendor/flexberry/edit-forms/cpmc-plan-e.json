@@ -1,0 +1,22 @@
+﻿{
+  "propertyLookup": [
+    {
+      "master": "dSE",
+      "displayAttributeName": "code",
+      "required": true,
+      "relationName": "PlanItem.DSE",
+      "projection": "DSEL",
+      "detailModelName": "cpmc-plan-item"
+    }
+  ],
+  "caption": "План",
+  "name": "cpmcPlanE",
+  "className": "PlanE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-plan",
+      "modelProjection": "PlanE"
+    }
+  ]
+}

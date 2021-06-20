@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-d-s-e-e",
+  "editForm": "cpmc-d-s-e-e",
+  "caption": "Детали",
+  "name": "cpmcDSEL",
+  "className": "DSEL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-d-s-e",
+      "modelProjection": "DSEL"
+    }
+  ]
+}

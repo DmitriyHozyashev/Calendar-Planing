@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-tool-e",
+  "editForm": "cpmc-tool-e",
+  "caption": "Инструменты",
+  "name": "cpmcToolL",
+  "className": "ToolL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-tool",
+      "modelProjection": "ToolL"
+    }
+  ]
+}

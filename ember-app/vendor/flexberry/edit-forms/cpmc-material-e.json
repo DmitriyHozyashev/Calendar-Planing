@@ -1,0 +1,22 @@
+﻿{
+  "propertyLookup": [
+    {
+      "master": null,
+      "displayAttributeName": null,
+      "required": false,
+      "relationName": "UnitMetr",
+      "projection": "UnitMetrL",
+      "detailModelName": null
+    }
+  ],
+  "caption": "Материал",
+  "name": "cpmcMaterialE",
+  "className": "MaterialE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-material",
+      "modelProjection": "MaterialE"
+    }
+  ]
+}

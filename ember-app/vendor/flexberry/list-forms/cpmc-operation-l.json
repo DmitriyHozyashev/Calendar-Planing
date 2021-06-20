@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-operation-e",
+  "editForm": "cpmc-operation-e",
+  "caption": "Операции",
+  "name": "cpmcOperationL",
+  "className": "OperationL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-operation",
+      "modelProjection": "OperationL"
+    }
+  ]
+}

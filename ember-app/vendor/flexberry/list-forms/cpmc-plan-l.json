@@ -1,0 +1,14 @@
+﻿{
+  "newForm": "cpmc-plan-e",
+  "editForm": "cpmc-plan-e",
+  "caption": "Планы",
+  "name": "cpmcPlanL",
+  "className": "PlanL",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-plan",
+      "modelProjection": "PlanL"
+    }
+  ]
+}

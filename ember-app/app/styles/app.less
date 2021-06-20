@@ -1,0 +1,256 @@
+@import "src/semantic";
+@import "node_modules/ember-flexberry/addon/styles/addon";
+
+.spinner {
+  background: url('images/nyan.gif') no-repeat;
+  background-size: contain;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.loading-message {
+  text-align: center;
+  color: #aaa;
+}
+
+#example {
+  .flexberry-content {
+    padding: 1em 0;
+    height: 100%;
+  }
+}
+
+#example-mobile {
+  .flexberry-content {
+    padding: 0px 10px 2em 10px;
+    border-bottom: none;
+    height: 100%;
+  }
+}
+
+/*-------------------
+      Логин-форма
+--------------------*/
+@loginFormPageClass: login-form;
+@loginFormPageHeaderClass: login-form-header;
+@loginFormClass: login-form-inner;
+@loginFormLabelClass: login-form-label;
+@loginFormBtnClass: login-form-btn;
+@loginFormInputClass: login-form-input;
+@loginFormFooterClass: login-form-footer;
+@loginFormFailureTextClass: login-from-failure-text;
+@loginFormRememberMeClass: login-form-remember;
+@loginFormForgotPasswordClass: login-form-forgot;
+@loginFormFailureNotificationClass: failureNotification;
+@loginFormInnerPadding: 24px 32px;
+@loginFormInnerHeaderSize: 14px;
+@loginFormInnerHeaderMargin: 0 0 16px 0;
+@loginFormInnerWidth: 365px;
+@loginFormInnerBorderRadius: 7px;
+@loginFormClassFontFamily: Arial,sans-serif;
+@loginFormClassBoxShadow: 0 1px 2px 2px rgba(34,36,38,.15);
+@input-height-base: 27px;
+@loginFormFailureTextBackgroundColor: #f2dede;
+@loginFormFailureTextBorderColor: #a94442;
+@loginFormFailureTextColor: #ff634e;
+@loginFormFailureNotificationColor: #a94442;
+@loginFormPageBackgroundColor: #a3cef9;
+@loginFormPageHeaderColor: #4f73b0;
+@loginFormPageHeaderTextColor: #fff;
+@loginFormInnerBackgroundColor: #fff;
+@loginFormInnerHeaderColor: #444;
+@loginFormBtnColor: #7ba7d9;
+@loginFormBtnHover: #90b5e0;
+@loginFormInputColor: #444;
+@loginFormInputFocusColor: #bbb;
+
+/*-------------------
+      Логин-форма
+--------------------*/
+.ember-application.login-form {
+  // background: @loginFormPageBackgroundColor !important;
+
+  padding: 0;
+  margin: 0;
+  color: #777;
+  font-family: Arial,sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+
+  // Заголовок логин-формы.
+  .@{loginFormPageHeaderClass} {
+    color: @loginFormPageHeaderTextColor;
+    padding: 30px;
+    font-family: @loginFormClassFontFamily;
+    background: @loginFormPageHeaderColor;
+  }
+
+  .@{loginFormClass} {
+    display: block;
+    background: #fff;
+    overflow: visible;
+    position: absolute;
+    left: 50%;
+    margin-top: 165px;
+    margin-left: -150px;
+    margin-right: auto;
+    margin-bottom: 0;
+    padding: 24px 32px;
+    width: 300px;
+    height: 330px;
+    box-shadow:  @loginFormClassBoxShadow;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+
+    &:after{
+      content: "";
+      display: block;
+      width: 300px;
+      height: 50px;
+      background: #E5F1FF;
+      margin-left: -32px;
+      margin-top: 11px;
+      border-bottom-left-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    // Заголовок окна входа.
+    h2 {
+      font-family: @loginFormClassFontFamily;
+      font-size: 25px;
+      line-height: 16px;
+      font-weight: 400;
+      margin: 15px 0px 50px 0px;
+      color: #000;
+      text-align: center;
+    }
+
+    label {
+      margin-top: 10px;
+    }
+
+    // Сообщение об ошибке.
+    .@{loginFormFailureTextClass} {
+      position: absolute;
+      display: block;
+      margin-top: 10px;
+      margin-left: 280px;
+      padding: 14px;
+      width: 220px;
+      border: 1px solid @loginFormFailureTextBorderColor;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      border-radius: 12px;
+      color: @loginFormFailureTextColor;
+      background-color: @loginFormFailureTextBackgroundColor;
+
+      &:after,
+      &:before {
+        position: absolute;
+        top: 10px;
+        right: 100%;
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        content: " ";
+        pointer-events: none;
+      }
+
+      &:before {
+        border-color: transparent @loginFormFailureTextBorderColor transparent transparent;
+        border-width: 10px;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    // Footer окна входа.
+    .actions {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      padding: 10px;
+      width: 100%;
+      height: 50px;
+      background-color: #e6f1ff;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    // Кнопка "Войти".
+    .@{loginFormBtnClass} {
+      box-shadow: none;
+      padding: 0px 20px;
+      margin-top: 20px;
+      margin-right: -20px;
+      height: 32px;
+      font-size: 15px;
+      background: @loginFormBtnColor;
+      color: #fff;
+      border-color: @loginFormBtnColor;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      float: right;
+
+      &:hover{
+        background-color: @loginFormBtnHover;
+        border-color: @loginFormBtnHover;
+      }
+    }
+
+    // Поля ввода.
+    .@{loginFormInputClass} {
+      width: 100%;
+      height: @input-height-base;
+      font-size: 17px;
+      color: @loginFormInputColor;
+      background: #fff;
+      margin-top: 2px;
+      margin-bottom: 38px;
+      margin-right: 0px;
+      margin-left: 0px;
+      padding: 1px;
+      border: none;
+      border-bottom: 1px solid #b1cae8;
+      border-radius: 0px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: @loginFormInputFocusColor;
+      }
+    }
+
+    .validator {
+      color: #f00;
+      font-size: 13px;
+    }
+  }
+}
+
+.background-logo a {
+  background: none; 
+  border-radius: 0; 
+  box-shadow: none;
+  margin: 5px;
+  img {
+    height: 70px;
+  }
+}
+
+.flexberry-edit-panel {
+  display: flex;
+}

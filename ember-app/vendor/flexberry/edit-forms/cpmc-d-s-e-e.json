@@ -1,0 +1,78 @@
+﻿{
+  "propertyLookup": [
+    {
+      "master": null,
+      "displayAttributeName": null,
+      "required": false,
+      "relationName": "WorkType",
+      "projection": "WorkTypeL",
+      "detailModelName": null
+    },
+    {
+      "master": null,
+      "displayAttributeName": null,
+      "required": false,
+      "relationName": "UnitMetr",
+      "projection": "UnitMetrL",
+      "detailModelName": null
+    },
+    {
+      "master": null,
+      "displayAttributeName": null,
+      "required": false,
+      "relationName": "LaborIntensityUnit",
+      "projection": "UnitMetrL",
+      "detailModelName": null
+    },
+    {
+      "master": null,
+      "displayAttributeName": null,
+      "required": false,
+      "relationName": "ProcessOrder",
+      "projection": "ProcessOrderL",
+      "detailModelName": null
+    },
+    {
+      "master": "unitMetr",
+      "displayAttributeName": "shortName",
+      "required": true,
+      "relationName": "DSERout.UnitMetr",
+      "projection": "UnitMetrL",
+      "detailModelName": "cpmc-d-s-e-rout"
+    },
+    {
+      "master": "tool",
+      "displayAttributeName": "name",
+      "required": true,
+      "relationName": "DSERout.Tool",
+      "projection": "ToolL",
+      "detailModelName": "cpmc-d-s-e-rout"
+    },
+    {
+      "master": "material",
+      "displayAttributeName": "name",
+      "required": true,
+      "relationName": "DSERout.Material",
+      "projection": "MaterialL",
+      "detailModelName": "cpmc-d-s-e-rout"
+    },
+    {
+      "master": "operation",
+      "displayAttributeName": "name",
+      "required": true,
+      "relationName": "DSERout.Operation",
+      "projection": "OperationL",
+      "detailModelName": "cpmc-d-s-e-rout"
+    }
+  ],
+  "caption": "Деталь",
+  "name": "cpmcDSEE",
+  "className": "DSEE",
+  "attrs": [],
+  "projections": [
+    {
+      "modelName": "cpmc-d-s-e",
+      "modelProjection": "DSEE"
+    }
+  ]
+}

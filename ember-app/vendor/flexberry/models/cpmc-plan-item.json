@@ -1,0 +1,145 @@
+﻿{
+  "name": "cpmcPlanItem",
+  "modelName": "cpmc-plan-item",
+  "className": "PlanItem",
+  "parentModelName": null,
+  "parentClassName": null,
+  "attrs": [
+    {
+      "name": "createTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "creator",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editor",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    }
+  ],
+  "belongsTo": [
+    {
+      "polymorphic": false,
+      "presence": true,
+      "name": "dSE",
+      "relatedTo": "cpmc-d-s-e",
+      "inverse": null
+    },
+    {
+      "polymorphic": false,
+      "presence": true,
+      "name": "plan",
+      "relatedTo": "cpmc-plan",
+      "inverse": "planItem"
+    }
+  ],
+  "hasMany": [],
+  "projections": [
+    {
+      "name": "AuditView",
+      "modelName": "cpmc-plan-item",
+      "attrs": [],
+      "belongsTo": [
+        {
+          "lookupValue": "Name",
+          "lookupValueField": "name",
+          "relationName": "DSE",
+          "belongsTo": [],
+          "hidden": false,
+          "attrs": [
+            {
+              "name": "name",
+              "caption": "Name",
+              "hidden": true,
+              "index": 1
+            }
+          ],
+          "index": 0,
+          "caption": "DSE",
+          "name": "dSE",
+          "relatedTo": "cpmc-d-s-e",
+          "inverse": null
+        }
+      ],
+      "hasMany": []
+    },
+    {
+      "name": "PlanItemE",
+      "modelName": "cpmc-plan-item",
+      "attrs": [],
+      "belongsTo": [
+        {
+          "lookupValue": "Code",
+          "lookupValueField": "code",
+          "relationName": "DSE",
+          "belongsTo": [
+            {
+              "lookupValue": null,
+              "lookupValueField": null,
+              "relationName": "DSE.ProcessOrder",
+              "belongsTo": [],
+              "hidden": false,
+              "attrs": [
+                {
+                  "name": "name",
+                  "caption": "Порядок обработки",
+                  "hidden": false,
+                  "index": 3
+                }
+              ],
+              "index": -1,
+              "caption": "",
+              "name": "processOrder",
+              "relatedTo": "cpmc-process-order",
+              "inverse": null
+            }
+          ],
+          "hidden": false,
+          "attrs": [
+            {
+              "name": "code",
+              "caption": "",
+              "hidden": true,
+              "index": 1
+            },
+            {
+              "name": "name",
+              "caption": "Наименование",
+              "hidden": false,
+              "index": 2
+            }
+          ],
+          "index": 0,
+          "caption": "Код",
+          "name": "dSE",
+          "relatedTo": "cpmc-d-s-e",
+          "inverse": null
+        }
+      ],
+      "hasMany": []
+    }
+  ],
+  "stored": true,
+  "offline": true
+}

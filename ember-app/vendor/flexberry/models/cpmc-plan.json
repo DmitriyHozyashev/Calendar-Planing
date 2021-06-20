@@ -1,0 +1,229 @@
+﻿{
+  "name": "cpmcPlan",
+  "modelName": "cpmc-plan",
+  "className": "Plan",
+  "parentModelName": null,
+  "parentClassName": null,
+  "attrs": [
+    {
+      "name": "name",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "algorithm",
+      "type": "cpmc-t-plan-algorithm",
+      "flexberryType": "tPlanAlgorithm",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "totalTime",
+      "type": "number",
+      "flexberryType": "double",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "state",
+      "type": "cpmc-t-plan-state",
+      "flexberryType": "tPlanState",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "createTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "creator",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editTime",
+      "type": "date",
+      "flexberryType": "AuditNullableDateTime",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    },
+    {
+      "name": "editor",
+      "type": "string",
+      "flexberryType": "string",
+      "notNull": false,
+      "defaultValue": "",
+      "stored": true
+    }
+  ],
+  "belongsTo": [],
+  "hasMany": [
+    {
+      "name": "planItem",
+      "relatedTo": "cpmc-plan-item",
+      "inverse": "plan"
+    }
+  ],
+  "projections": [
+    {
+      "name": "AuditView",
+      "modelName": "cpmc-plan",
+      "attrs": [
+        {
+          "name": "name",
+          "caption": "Name",
+          "hidden": false,
+          "index": 0
+        },
+        {
+          "name": "algorithm",
+          "caption": "Algorithm",
+          "hidden": false,
+          "index": 1
+        },
+        {
+          "name": "totalTime",
+          "caption": "Total time",
+          "hidden": false,
+          "index": 2
+        },
+        {
+          "name": "state",
+          "caption": "State",
+          "hidden": false,
+          "index": 3
+        }
+      ],
+      "belongsTo": [],
+      "hasMany": [
+        {
+          "projectionName": "AuditView",
+          "caption": "Plan item",
+          "name": "planItem",
+          "relatedTo": "cpmc-plan-item",
+          "inverse": null
+        }
+      ]
+    },
+    {
+      "name": "PlanE",
+      "modelName": "cpmc-plan",
+      "attrs": [
+        {
+          "name": "name",
+          "caption": "Наименование",
+          "hidden": false,
+          "index": 0
+        },
+        {
+          "name": "state",
+          "caption": "Состояние",
+          "hidden": false,
+          "index": 1
+        },
+        {
+          "name": "algorithm",
+          "caption": "Алгоритм вычисления",
+          "hidden": false,
+          "index": 2
+        },
+        {
+          "name": "totalTime",
+          "caption": "Общее время",
+          "hidden": false,
+          "index": 3
+        }
+      ],
+      "belongsTo": [],
+      "hasMany": [
+        {
+          "projectionName": "PlanItemE",
+          "caption": "Строка плана",
+          "name": "planItem",
+          "relatedTo": "cpmc-plan-item",
+          "inverse": null
+        }
+      ]
+    },
+    {
+      "name": "PlanL",
+      "modelName": "cpmc-plan",
+      "attrs": [
+        {
+          "name": "name",
+          "caption": "Наименование",
+          "hidden": false,
+          "index": 0
+        },
+        {
+          "name": "state",
+          "caption": "Состояние",
+          "hidden": false,
+          "index": 1
+        },
+        {
+          "name": "algorithm",
+          "caption": "Алгоритм вычисления",
+          "hidden": false,
+          "index": 2
+        },
+        {
+          "name": "totalTime",
+          "caption": "Общее время",
+          "hidden": false,
+          "index": 3
+        },
+        {
+          "name": "createTime",
+          "caption": "Дата создания",
+          "hidden": false,
+          "index": 4
+        },
+        {
+          "name": "creator",
+          "caption": "Создатель",
+          "hidden": false,
+          "index": 5
+        },
+        {
+          "name": "editTime",
+          "caption": "Дата редактрвоания",
+          "hidden": false,
+          "index": 6
+        },
+        {
+          "name": "editor",
+          "caption": "Редактор",
+          "hidden": false,
+          "index": 7
+        }
+      ],
+      "belongsTo": [],
+      "hasMany": [
+        {
+          "projectionName": "PlanItemE",
+          "caption": "",
+          "name": "planItem",
+          "relatedTo": "cpmc-plan-item",
+          "inverse": null
+        }
+      ]
+    }
+  ],
+  "stored": true,
+  "offline": true
+}
